@@ -1,0 +1,230 @@
+{
+   "California": {
+      "url": "https://disease.sh/v3/covid-19/states/California",
+      "api": "Worldometers"
+   },
+   "Texas": {
+      "url": "https://disease.sh/v3/covid-19/states/Texas",
+      "api": "Worldometers"
+   },
+   "Florida": {
+      "url": "https://disease.sh/v3/covid-19/states/Florida",
+      "api": "Worldometers"
+   },
+   "New York": {
+      "url": "https://disease.sh/v3/covid-19/states/New York",
+      "api": "Worldometers"
+   },
+   "Illinois": {
+      "url": "https://disease.sh/v3/covid-19/states/Illinois",
+      "api": "Worldometers"
+   },
+   "Pennsylvania": {
+      "url": "https://disease.sh/v3/covid-19/states/Pennsylvania",
+      "api": "Worldometers"
+   },
+   "Georgia": {
+      "url": "https://disease.sh/v3/covid-19/states/Georgia",
+      "api": "Worldometers"
+   },
+   "Ohio": {
+      "url": "https://disease.sh/v3/covid-19/states/Ohio",
+      "api": "Worldometers"
+   },
+   "New Jersey": {
+      "url": "https://disease.sh/v3/covid-19/states/New Jersey",
+      "api": "Worldometers"
+   },
+   "North Carolina": {
+      "url": "https://disease.sh/v3/covid-19/states/North Carolina",
+      "api": "Worldometers"
+   },
+   "Michigan": {
+      "url": "https://disease.sh/v3/covid-19/states/Michigan",
+      "api": "Worldometers"
+   },
+   "Arizona": {
+      "url": "https://disease.sh/v3/covid-19/states/Arizona",
+      "api": "Worldometers"
+   },
+   "Tennessee": {
+      "url": "https://disease.sh/v3/covid-19/states/Tennessee",
+      "api": "Worldometers"
+   },
+   "Indiana": {
+      "url": "https://disease.sh/v3/covid-19/states/Indiana",
+      "api": "Worldometers"
+   },
+   "Massachusetts": {
+      "url": "https://disease.sh/v3/covid-19/states/Massachusetts",
+      "api": "Worldometers"
+   },
+   "Virginia": {
+      "url": "https://disease.sh/v3/covid-19/states/Virginia",
+      "api": "Worldometers"
+   },
+   "Wisconsin": {
+      "url": "https://disease.sh/v3/covid-19/states/Wisconsin",
+      "api": "Worldometers"
+   },
+   "Minnesota": {
+      "url": "https://disease.sh/v3/covid-19/states/Minnesota",
+      "api": "Worldometers"
+   },
+   "Missouri": {
+      "url": "https://disease.sh/v3/covid-19/states/Missouri",
+      "api": "Worldometers"
+   },
+   "South Carolina": {
+      "url": "https://disease.sh/v3/covid-19/states/South Carolina",
+      "api": "Worldometers"
+   },
+   "Alabama": {
+      "url": "https://disease.sh/v3/covid-19/states/Alabama",
+      "api": "Worldometers"
+   },
+   "Colorado": {
+      "url": "https://disease.sh/v3/covid-19/states/Colorado",
+      "api": "Worldometers"
+   },
+   "Louisiana": {
+      "url": "https://disease.sh/v3/covid-19/states/Louisiana",
+      "api": "Worldometers"
+   },
+   "Maryland": {
+      "url": "https://disease.sh/v3/covid-19/states/Maryland",
+      "api": "Worldometers"
+   },
+   "Kentucky": {
+      "url": "https://disease.sh/v3/covid-19/states/Kentucky",
+      "api": "Worldometers"
+   },
+   "Oklahoma": {
+      "url": "https://disease.sh/v3/covid-19/states/Oklahoma",
+      "api": "Worldometers"
+   },
+   "Washington": {
+      "url": "https://disease.sh/v3/covid-19/states/Washington",
+      "api": "Worldometers"
+   },
+   "Utah": {
+      "url": "https://disease.sh/v3/covid-19/states/Utah",
+      "api": "Worldometers"
+   },
+   "Iowa": {
+      "url": "https://disease.sh/v3/covid-19/states/Iowa",
+      "api": "Worldometers"
+   },
+   "Connecticut": {
+      "url": "https://disease.sh/v3/covid-19/states/Connecticut",
+      "api": "Worldometers"
+   },
+   "Arkansas": {
+      "url": "https://disease.sh/v3/covid-19/states/Arkansas",
+      "api": "Worldometers"
+   },
+   "Nevada": {
+      "url": "https://disease.sh/v3/covid-19/states/Nevada",
+      "api": "Worldometers"
+   },
+   "Mississippi": {
+      "url": "https://disease.sh/v3/covid-19/states/Mississippi",
+      "api": "Worldometers"
+   },
+   "Kansas": {
+      "url": "https://disease.sh/v3/covid-19/states/Kansas",
+      "api": "Worldometers"
+   },
+   "Nebraska": {
+      "url": "https://disease.sh/v3/covid-19/states/Nebraska",
+      "api": "Worldometers"
+   },
+   "New Mexico": {
+      "url": "https://disease.sh/v3/covid-19/states/New Mexico",
+      "api": "Worldometers"
+   },
+   "Oregon": {
+      "url": "https://disease.sh/v3/covid-19/states/Oregon",
+      "api": "Worldometers"
+   },
+   "Idaho": {
+      "url": "https://disease.sh/v3/covid-19/states/Idaho",
+      "api": "Worldometers"
+   },
+   "West Virginia": {
+      "url": "https://disease.sh/v3/covid-19/states/West Virginia",
+      "api": "Worldometers"
+   },
+   "Rhode Island": {
+      "url": "https://disease.sh/v3/covid-19/states/Rhode Island",
+      "api": "Worldometers"
+   },
+   "South Dakota": {
+      "url": "https://disease.sh/v3/covid-19/states/South Dakota",
+      "api": "Worldometers"
+   },
+   "Montana": {
+      "url": "https://disease.sh/v3/covid-19/states/Montana",
+      "api": "Worldometers"
+   },
+   "North Dakota": {
+      "url": "https://disease.sh/v3/covid-19/states/North Dakota",
+      "api": "Worldometers"
+   },
+   "Delaware": {
+      "url": "https://disease.sh/v3/covid-19/states/Delaware",
+      "api": "Worldometers"
+   },
+   "New Hampshire": {
+      "url": "https://disease.sh/v3/covid-19/states/New Hampshire",
+      "api": "Worldometers"
+   },
+   "Alaska": {
+      "url": "https://disease.sh/v3/covid-19/states/Alaska",
+      "api": "Worldometers"
+   },
+   "Maine": {
+      "url": "https://disease.sh/v3/covid-19/states/Maine",
+      "api": "Worldometers"
+   },
+   "Wyoming": {
+      "url": "https://disease.sh/v3/covid-19/states/Wyoming",
+      "api": "Worldometers"
+   },
+   "District Of Columbia": {
+      "url": "https://disease.sh/v3/covid-19/states/District Of Columbia",
+      "api": "Worldometers"
+   },
+   "Hawaii": {
+      "url": "https://disease.sh/v3/covid-19/states/Hawaii",
+      "api": "Worldometers"
+   },
+   "Vermont": {
+      "url": "https://disease.sh/v3/covid-19/states/Vermont",
+      "api": "Worldometers"
+   },
+   "Puerto Rico": {
+      "url": "https://disease.sh/v3/covid-19/states/Puerto Rico",
+      "api": "Worldometers"
+   },
+   "Guam": {
+      "url": "https://disease.sh/v3/covid-19/states/Guam",
+      "api": "Worldometers"
+   },
+   "United States Virgin Islands": {
+      "url": "https://disease.sh/v3/covid-19/states/United States Virgin Islands",
+      "api": "Worldometers"
+   },
+   "Northern Mariana Islands": {
+      "url": "https://disease.sh/v3/covid-19/states/Northern Mariana Islands",
+      "api": "Worldometers"
+   },
+   "American Samoa": {
+      "url": "https://disease.sh/v3/covid-19/states/American Samoa",
+      "api": "Worldometers"
+   },
+   "Navajo Nation": {
+      "url": "https://disease.sh/v3/covid-19/states/Navajo Nation",
+      "api": "Worldometers"
+   }
+}

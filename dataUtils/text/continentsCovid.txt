@@ -1,0 +1,26 @@
+{
+   "North America": {
+      "url": "https://disease.sh/v3/covid-19/continents/North America",
+      "api": "Worldometers"
+   },
+   "Asia": {
+      "url": "https://disease.sh/v3/covid-19/continents/Asia",
+      "api": "Worldometers"
+   },
+   "South America": {
+      "url": "https://disease.sh/v3/covid-19/continents/South America",
+      "api": "Worldometers"
+   },
+   "Europe": {
+      "url": "https://disease.sh/v3/covid-19/continents/Europe",
+      "api": "Worldometers"
+   },
+   "Africa": {
+      "url": "https://disease.sh/v3/covid-19/continents/Africa",
+      "api": "Worldometers"
+   },
+   "Australia": {
+      "url": "https://disease.sh/v3/covid-19/continents/Australia-Oceania",
+      "api": "Worldometers"
+   }
+}

@@ -1,0 +1,886 @@
+{
+   "Afghanistan": {
+      "url": "https://disease.sh/v3/covid-19/countries/Afghanistan",
+      "api": "Worldometers"
+   },
+   "Albania": {
+      "url": "https://disease.sh/v3/covid-19/countries/Albania",
+      "api": "Worldometers"
+   },
+   "Algeria": {
+      "url": "https://disease.sh/v3/covid-19/countries/Algeria",
+      "api": "Worldometers"
+   },
+   "Andorra": {
+      "url": "https://disease.sh/v3/covid-19/countries/Andorra",
+      "api": "Worldometers"
+   },
+   "Angola": {
+      "url": "https://disease.sh/v3/covid-19/countries/Angola",
+      "api": "Worldometers"
+   },
+   "Anguilla": {
+      "url": "https://disease.sh/v3/covid-19/countries/Anguilla",
+      "api": "Worldometers"
+   },
+   "Antigua and Barbuda": {
+      "url": "https://disease.sh/v3/covid-19/countries/Antigua and Barbuda",
+      "api": "Worldometers"
+   },
+   "Argentina": {
+      "url": "https://disease.sh/v3/covid-19/countries/Argentina",
+      "api": "Worldometers"
+   },
+   "Armenia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Armenia",
+      "api": "Worldometers"
+   },
+   "Aruba": {
+      "url": "https://disease.sh/v3/covid-19/countries/Aruba",
+      "api": "Worldometers"
+   },
+   "Australia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Australia",
+      "api": "Worldometers"
+   },
+   "Austria": {
+      "url": "https://disease.sh/v3/covid-19/countries/Austria",
+      "api": "Worldometers"
+   },
+   "Azerbaijan": {
+      "url": "https://disease.sh/v3/covid-19/countries/Azerbaijan",
+      "api": "Worldometers"
+   },
+   "Bahamas": {
+      "url": "https://disease.sh/v3/covid-19/countries/Bahamas",
+      "api": "Worldometers"
+   },
+   "Bahrain": {
+      "url": "https://disease.sh/v3/covid-19/countries/Bahrain",
+      "api": "Worldometers"
+   },
+   "Bangladesh": {
+      "url": "https://disease.sh/v3/covid-19/countries/Bangladesh",
+      "api": "Worldometers"
+   },
+   "Barbados": {
+      "url": "https://disease.sh/v3/covid-19/countries/Barbados",
+      "api": "Worldometers"
+   },
+   "Belarus": {
+      "url": "https://disease.sh/v3/covid-19/countries/Belarus",
+      "api": "Worldometers"
+   },
+   "Belgium": {
+      "url": "https://disease.sh/v3/covid-19/countries/Belgium",
+      "api": "Worldometers"
+   },
+   "Belize": {
+      "url": "https://disease.sh/v3/covid-19/countries/Belize",
+      "api": "Worldometers"
+   },
+   "Benin": {
+      "url": "https://disease.sh/v3/covid-19/countries/Benin",
+      "api": "Worldometers"
+   },
+   "Bermuda": {
+      "url": "https://disease.sh/v3/covid-19/countries/Bermuda",
+      "api": "Worldometers"
+   },
+   "Bhutan": {
+      "url": "https://disease.sh/v3/covid-19/countries/Bhutan",
+      "api": "Worldometers"
+   },
+   "Bolivia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Bolivia",
+      "api": "Worldometers"
+   },
+   "Bosnia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Bosnia",
+      "api": "Worldometers"
+   },
+   "Botswana": {
+      "url": "https://disease.sh/v3/covid-19/countries/Botswana",
+      "api": "Worldometers"
+   },
+   "Brazil": {
+      "url": "https://disease.sh/v3/covid-19/countries/Brazil",
+      "api": "Worldometers"
+   },
+   "British Virgin Islands": {
+      "url": "https://disease.sh/v3/covid-19/countries/British Virgin Islands",
+      "api": "Worldometers"
+   },
+   "Brunei": {
+      "url": "https://disease.sh/v3/covid-19/countries/Brunei",
+      "api": "Worldometers"
+   },
+   "Bulgaria": {
+      "url": "https://disease.sh/v3/covid-19/countries/Bulgaria",
+      "api": "Worldometers"
+   },
+   "Burkina Faso": {
+      "url": "https://disease.sh/v3/covid-19/countries/Burkina Faso",
+      "api": "Worldometers"
+   },
+   "Burundi": {
+      "url": "https://disease.sh/v3/covid-19/countries/Burundi",
+      "api": "Worldometers"
+   },
+   "Cabo Verde": {
+      "url": "https://disease.sh/v3/covid-19/countries/Cabo Verde",
+      "api": "Worldometers"
+   },
+   "Cambodia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Cambodia",
+      "api": "Worldometers"
+   },
+   "Cameroon": {
+      "url": "https://disease.sh/v3/covid-19/countries/Cameroon",
+      "api": "Worldometers"
+   },
+   "Canada": {
+      "url": "https://disease.sh/v3/covid-19/countries/Canada",
+      "api": "Worldometers"
+   },
+   "Caribbean Netherlands": {
+      "url": "https://disease.sh/v3/covid-19/countries/Caribbean Netherlands",
+      "api": "Worldometers"
+   },
+   "Cayman Islands": {
+      "url": "https://disease.sh/v3/covid-19/countries/Cayman Islands",
+      "api": "Worldometers"
+   },
+   "Central African Republic": {
+      "url": "https://disease.sh/v3/covid-19/countries/Central African Republic",
+      "api": "Worldometers"
+   },
+   "Chad": {
+      "url": "https://disease.sh/v3/covid-19/countries/Chad",
+      "api": "Worldometers"
+   },
+   "Channel Islands": {
+      "url": "https://disease.sh/v3/covid-19/countries/Channel Islands",
+      "api": "Worldometers"
+   },
+   "Chile": {
+      "url": "https://disease.sh/v3/covid-19/countries/Chile",
+      "api": "Worldometers"
+   },
+   "China": {
+      "url": "https://disease.sh/v3/covid-19/countries/China",
+      "api": "Worldometers"
+   },
+   "Colombia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Colombia",
+      "api": "Worldometers"
+   },
+   "Comoros": {
+      "url": "https://disease.sh/v3/covid-19/countries/Comoros",
+      "api": "Worldometers"
+   },
+   "Congo": {
+      "url": "https://disease.sh/v3/covid-19/countries/Congo",
+      "api": "Worldometers"
+   },
+   "Costa Rica": {
+      "url": "https://disease.sh/v3/covid-19/countries/Costa Rica",
+      "api": "Worldometers"
+   },
+   "Croatia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Croatia",
+      "api": "Worldometers"
+   },
+   "Cuba": {
+      "url": "https://disease.sh/v3/covid-19/countries/Cuba",
+      "api": "Worldometers"
+   },
+   "Curaçao": {
+      "url": "https://disease.sh/v3/covid-19/countries/Curaçao",
+      "api": "Worldometers"
+   },
+   "Cyprus": {
+      "url": "https://disease.sh/v3/covid-19/countries/Cyprus",
+      "api": "Worldometers"
+   },
+   "Czechia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Czechia",
+      "api": "Worldometers"
+   },
+   "Côte d'Ivoire": {
+      "url": "https://disease.sh/v3/covid-19/countries/Côte d'Ivoire",
+      "api": "Worldometers"
+   },
+   "DRC": {
+      "url": "https://disease.sh/v3/covid-19/countries/DRC",
+      "api": "Worldometers"
+   },
+   "Denmark": {
+      "url": "https://disease.sh/v3/covid-19/countries/Denmark",
+      "api": "Worldometers"
+   },
+   "Djibouti": {
+      "url": "https://disease.sh/v3/covid-19/countries/Djibouti",
+      "api": "Worldometers"
+   },
+   "Dominica": {
+      "url": "https://disease.sh/v3/covid-19/countries/Dominica",
+      "api": "Worldometers"
+   },
+   "Dominican Republic": {
+      "url": "https://disease.sh/v3/covid-19/countries/Dominican Republic",
+      "api": "Worldometers"
+   },
+   "Ecuador": {
+      "url": "https://disease.sh/v3/covid-19/countries/Ecuador",
+      "api": "Worldometers"
+   },
+   "Egypt": {
+      "url": "https://disease.sh/v3/covid-19/countries/Egypt",
+      "api": "Worldometers"
+   },
+   "El Salvador": {
+      "url": "https://disease.sh/v3/covid-19/countries/El Salvador",
+      "api": "Worldometers"
+   },
+   "Equatorial Guinea": {
+      "url": "https://disease.sh/v3/covid-19/countries/Equatorial Guinea",
+      "api": "Worldometers"
+   },
+   "Eritrea": {
+      "url": "https://disease.sh/v3/covid-19/countries/Eritrea",
+      "api": "Worldometers"
+   },
+   "Estonia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Estonia",
+      "api": "Worldometers"
+   },
+   "Ethiopia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Ethiopia",
+      "api": "Worldometers"
+   },
+   "Falkland Islands (Malvinas)": {
+      "url": "https://disease.sh/v3/covid-19/countries/Falkland Islands (Malvinas)",
+      "api": "Worldometers"
+   },
+   "Faroe Islands": {
+      "url": "https://disease.sh/v3/covid-19/countries/Faroe Islands",
+      "api": "Worldometers"
+   },
+   "Fiji": {
+      "url": "https://disease.sh/v3/covid-19/countries/Fiji",
+      "api": "Worldometers"
+   },
+   "Finland": {
+      "url": "https://disease.sh/v3/covid-19/countries/Finland",
+      "api": "Worldometers"
+   },
+   "France": {
+      "url": "https://disease.sh/v3/covid-19/countries/France",
+      "api": "Worldometers"
+   },
+   "French Guiana": {
+      "url": "https://disease.sh/v3/covid-19/countries/French Guiana",
+      "api": "Worldometers"
+   },
+   "French Polynesia": {
+      "url": "https://disease.sh/v3/covid-19/countries/French Polynesia",
+      "api": "Worldometers"
+   },
+   "Gabon": {
+      "url": "https://disease.sh/v3/covid-19/countries/Gabon",
+      "api": "Worldometers"
+   },
+   "Gambia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Gambia",
+      "api": "Worldometers"
+   },
+   "Georgia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Georgia",
+      "api": "Worldometers"
+   },
+   "Germany": {
+      "url": "https://disease.sh/v3/covid-19/countries/Germany",
+      "api": "Worldometers"
+   },
+   "Ghana": {
+      "url": "https://disease.sh/v3/covid-19/countries/Ghana",
+      "api": "Worldometers"
+   },
+   "Gibraltar": {
+      "url": "https://disease.sh/v3/covid-19/countries/Gibraltar",
+      "api": "Worldometers"
+   },
+   "Greece": {
+      "url": "https://disease.sh/v3/covid-19/countries/Greece",
+      "api": "Worldometers"
+   },
+   "Greenland": {
+      "url": "https://disease.sh/v3/covid-19/countries/Greenland",
+      "api": "Worldometers"
+   },
+   "Grenada": {
+      "url": "https://disease.sh/v3/covid-19/countries/Grenada",
+      "api": "Worldometers"
+   },
+   "Guadeloupe": {
+      "url": "https://disease.sh/v3/covid-19/countries/Guadeloupe",
+      "api": "Worldometers"
+   },
+   "Guatemala": {
+      "url": "https://disease.sh/v3/covid-19/countries/Guatemala",
+      "api": "Worldometers"
+   },
+   "Guinea": {
+      "url": "https://disease.sh/v3/covid-19/countries/Guinea",
+      "api": "Worldometers"
+   },
+   "Guinea-Bissau": {
+      "url": "https://disease.sh/v3/covid-19/countries/Guinea-Bissau",
+      "api": "Worldometers"
+   },
+   "Guyana": {
+      "url": "https://disease.sh/v3/covid-19/countries/Guyana",
+      "api": "Worldometers"
+   },
+   "Haiti": {
+      "url": "https://disease.sh/v3/covid-19/countries/Haiti",
+      "api": "Worldometers"
+   },
+   "Holy See (Vatican City State)": {
+      "url": "https://disease.sh/v3/covid-19/countries/Holy See (Vatican City State)",
+      "api": "Worldometers"
+   },
+   "Honduras": {
+      "url": "https://disease.sh/v3/covid-19/countries/Honduras",
+      "api": "Worldometers"
+   },
+   "Hong Kong": {
+      "url": "https://disease.sh/v3/covid-19/countries/Hong Kong",
+      "api": "Worldometers"
+   },
+   "Hungary": {
+      "url": "https://disease.sh/v3/covid-19/countries/Hungary",
+      "api": "Worldometers"
+   },
+   "Iceland": {
+      "url": "https://disease.sh/v3/covid-19/countries/Iceland",
+      "api": "Worldometers"
+   },
+   "India": {
+      "url": "https://disease.sh/v3/covid-19/countries/India",
+      "api": "Worldometers"
+   },
+   "Indonesia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Indonesia",
+      "api": "Worldometers"
+   },
+   "Iran": {
+      "url": "https://disease.sh/v3/covid-19/countries/Iran",
+      "api": "Worldometers"
+   },
+   "Iraq": {
+      "url": "https://disease.sh/v3/covid-19/countries/Iraq",
+      "api": "Worldometers"
+   },
+   "Ireland": {
+      "url": "https://disease.sh/v3/covid-19/countries/Ireland",
+      "api": "Worldometers"
+   },
+   "Isle of Man": {
+      "url": "https://disease.sh/v3/covid-19/countries/Isle of Man",
+      "api": "Worldometers"
+   },
+   "Israel": {
+      "url": "https://disease.sh/v3/covid-19/countries/Israel",
+      "api": "Worldometers"
+   },
+   "Italy": {
+      "url": "https://disease.sh/v3/covid-19/countries/Italy",
+      "api": "Worldometers"
+   },
+   "Jamaica": {
+      "url": "https://disease.sh/v3/covid-19/countries/Jamaica",
+      "api": "Worldometers"
+   },
+   "Japan": {
+      "url": "https://disease.sh/v3/covid-19/countries/Japan",
+      "api": "Worldometers"
+   },
+   "Jordan": {
+      "url": "https://disease.sh/v3/covid-19/countries/Jordan",
+      "api": "Worldometers"
+   },
+   "Kazakhstan": {
+      "url": "https://disease.sh/v3/covid-19/countries/Kazakhstan",
+      "api": "Worldometers"
+   },
+   "Kenya": {
+      "url": "https://disease.sh/v3/covid-19/countries/Kenya",
+      "api": "Worldometers"
+   },
+   "Kuwait": {
+      "url": "https://disease.sh/v3/covid-19/countries/Kuwait",
+      "api": "Worldometers"
+   },
+   "Kyrgyzstan": {
+      "url": "https://disease.sh/v3/covid-19/countries/Kyrgyzstan",
+      "api": "Worldometers"
+   },
+   "Lao People's Democratic Republic": {
+      "url": "https://disease.sh/v3/covid-19/countries/Lao People's Democratic Republic",
+      "api": "Worldometers"
+   },
+   "Latvia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Latvia",
+      "api": "Worldometers"
+   },
+   "Lebanon": {
+      "url": "https://disease.sh/v3/covid-19/countries/Lebanon",
+      "api": "Worldometers"
+   },
+   "Lesotho": {
+      "url": "https://disease.sh/v3/covid-19/countries/Lesotho",
+      "api": "Worldometers"
+   },
+   "Liberia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Liberia",
+      "api": "Worldometers"
+   },
+   "Libyan Arab Jamahiriya": {
+      "url": "https://disease.sh/v3/covid-19/countries/Libyan Arab Jamahiriya",
+      "api": "Worldometers"
+   },
+   "Liechtenstein": {
+      "url": "https://disease.sh/v3/covid-19/countries/Liechtenstein",
+      "api": "Worldometers"
+   },
+   "Lithuania": {
+      "url": "https://disease.sh/v3/covid-19/countries/Lithuania",
+      "api": "Worldometers"
+   },
+   "Luxembourg": {
+      "url": "https://disease.sh/v3/covid-19/countries/Luxembourg",
+      "api": "Worldometers"
+   },
+   "MS Zaandam": {
+      "url": "https://disease.sh/v3/covid-19/countries/MS Zaandam",
+      "api": "Worldometers"
+   },
+   "Macao": {
+      "url": "https://disease.sh/v3/covid-19/countries/Macao",
+      "api": "Worldometers"
+   },
+   "Macedonia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Macedonia",
+      "api": "Worldometers"
+   },
+   "Madagascar": {
+      "url": "https://disease.sh/v3/covid-19/countries/Madagascar",
+      "api": "Worldometers"
+   },
+   "Malawi": {
+      "url": "https://disease.sh/v3/covid-19/countries/Malawi",
+      "api": "Worldometers"
+   },
+   "Malaysia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Malaysia",
+      "api": "Worldometers"
+   },
+   "Maldives": {
+      "url": "https://disease.sh/v3/covid-19/countries/Maldives",
+      "api": "Worldometers"
+   },
+   "Mali": {
+      "url": "https://disease.sh/v3/covid-19/countries/Mali",
+      "api": "Worldometers"
+   },
+   "Malta": {
+      "url": "https://disease.sh/v3/covid-19/countries/Malta",
+      "api": "Worldometers"
+   },
+   "Marshall Islands": {
+      "url": "https://disease.sh/v3/covid-19/countries/Marshall Islands",
+      "api": "Worldometers"
+   },
+   "Martinique": {
+      "url": "https://disease.sh/v3/covid-19/countries/Martinique",
+      "api": "Worldometers"
+   },
+   "Mauritania": {
+      "url": "https://disease.sh/v3/covid-19/countries/Mauritania",
+      "api": "Worldometers"
+   },
+   "Mauritius": {
+      "url": "https://disease.sh/v3/covid-19/countries/Mauritius",
+      "api": "Worldometers"
+   },
+   "Mayotte": {
+      "url": "https://disease.sh/v3/covid-19/countries/Mayotte",
+      "api": "Worldometers"
+   },
+   "Mexico": {
+      "url": "https://disease.sh/v3/covid-19/countries/Mexico",
+      "api": "Worldometers"
+   },
+   "Micronesia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Micronesia",
+      "api": "Worldometers"
+   },
+   "Moldova": {
+      "url": "https://disease.sh/v3/covid-19/countries/Moldova",
+      "api": "Worldometers"
+   },
+   "Monaco": {
+      "url": "https://disease.sh/v3/covid-19/countries/Monaco",
+      "api": "Worldometers"
+   },
+   "Mongolia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Mongolia",
+      "api": "Worldometers"
+   },
+   "Montenegro": {
+      "url": "https://disease.sh/v3/covid-19/countries/Montenegro",
+      "api": "Worldometers"
+   },
+   "Montserrat": {
+      "url": "https://disease.sh/v3/covid-19/countries/Montserrat",
+      "api": "Worldometers"
+   },
+   "Morocco": {
+      "url": "https://disease.sh/v3/covid-19/countries/Morocco",
+      "api": "Worldometers"
+   },
+   "Mozambique": {
+      "url": "https://disease.sh/v3/covid-19/countries/Mozambique",
+      "api": "Worldometers"
+   },
+   "Myanmar": {
+      "url": "https://disease.sh/v3/covid-19/countries/Myanmar",
+      "api": "Worldometers"
+   },
+   "Namibia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Namibia",
+      "api": "Worldometers"
+   },
+   "Nepal": {
+      "url": "https://disease.sh/v3/covid-19/countries/Nepal",
+      "api": "Worldometers"
+   },
+   "Netherlands": {
+      "url": "https://disease.sh/v3/covid-19/countries/Netherlands",
+      "api": "Worldometers"
+   },
+   "New Caledonia": {
+      "url": "https://disease.sh/v3/covid-19/countries/New Caledonia",
+      "api": "Worldometers"
+   },
+   "New Zealand": {
+      "url": "https://disease.sh/v3/covid-19/countries/New Zealand",
+      "api": "Worldometers"
+   },
+   "Nicaragua": {
+      "url": "https://disease.sh/v3/covid-19/countries/Nicaragua",
+      "api": "Worldometers"
+   },
+   "Niger": {
+      "url": "https://disease.sh/v3/covid-19/countries/Niger",
+      "api": "Worldometers"
+   },
+   "Nigeria": {
+      "url": "https://disease.sh/v3/covid-19/countries/Nigeria",
+      "api": "Worldometers"
+   },
+   "Norway": {
+      "url": "https://disease.sh/v3/covid-19/countries/Norway",
+      "api": "Worldometers"
+   },
+   "Oman": {
+      "url": "https://disease.sh/v3/covid-19/countries/Oman",
+      "api": "Worldometers"
+   },
+   "Pakistan": {
+      "url": "https://disease.sh/v3/covid-19/countries/Pakistan",
+      "api": "Worldometers"
+   },
+   "Palestine": {
+      "url": "https://disease.sh/v3/covid-19/countries/Palestine",
+      "api": "Worldometers"
+   },
+   "Panama": {
+      "url": "https://disease.sh/v3/covid-19/countries/Panama",
+      "api": "Worldometers"
+   },
+   "Papua New Guinea": {
+      "url": "https://disease.sh/v3/covid-19/countries/Papua New Guinea",
+      "api": "Worldometers"
+   },
+   "Paraguay": {
+      "url": "https://disease.sh/v3/covid-19/countries/Paraguay",
+      "api": "Worldometers"
+   },
+   "Peru": {
+      "url": "https://disease.sh/v3/covid-19/countries/Peru",
+      "api": "Worldometers"
+   },
+   "Philippines": {
+      "url": "https://disease.sh/v3/covid-19/countries/Philippines",
+      "api": "Worldometers"
+   },
+   "Poland": {
+      "url": "https://disease.sh/v3/covid-19/countries/Poland",
+      "api": "Worldometers"
+   },
+   "Portugal": {
+      "url": "https://disease.sh/v3/covid-19/countries/Portugal",
+      "api": "Worldometers"
+   },
+   "Qatar": {
+      "url": "https://disease.sh/v3/covid-19/countries/Qatar",
+      "api": "Worldometers"
+   },
+   "Romania": {
+      "url": "https://disease.sh/v3/covid-19/countries/Romania",
+      "api": "Worldometers"
+   },
+   "Russia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Russia",
+      "api": "Worldometers"
+   },
+   "Rwanda": {
+      "url": "https://disease.sh/v3/covid-19/countries/Rwanda",
+      "api": "Worldometers"
+   },
+   "Réunion": {
+      "url": "https://disease.sh/v3/covid-19/countries/Réunion",
+      "api": "Worldometers"
+   },
+   "S. Korea": {
+      "url": "https://disease.sh/v3/covid-19/countries/S. Korea",
+      "api": "Worldometers"
+   },
+   "Saint Helena": {
+      "url": "https://disease.sh/v3/covid-19/countries/Saint Helena",
+      "api": "Worldometers"
+   },
+   "Saint Kitts and Nevis": {
+      "url": "https://disease.sh/v3/covid-19/countries/Saint Kitts and Nevis",
+      "api": "Worldometers"
+   },
+   "Saint Lucia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Saint Lucia",
+      "api": "Worldometers"
+   },
+   "Saint Martin": {
+      "url": "https://disease.sh/v3/covid-19/countries/Saint Martin",
+      "api": "Worldometers"
+   },
+   "Saint Pierre Miquelon": {
+      "url": "https://disease.sh/v3/covid-19/countries/Saint Pierre Miquelon",
+      "api": "Worldometers"
+   },
+   "Saint Vincent and the Grenadines": {
+      "url": "https://disease.sh/v3/covid-19/countries/Saint Vincent and the Grenadines",
+      "api": "Worldometers"
+   },
+   "Samoa": {
+      "url": "https://disease.sh/v3/covid-19/countries/Samoa",
+      "api": "Worldometers"
+   },
+   "San Marino": {
+      "url": "https://disease.sh/v3/covid-19/countries/San Marino",
+      "api": "Worldometers"
+   },
+   "Sao Tome and Principe": {
+      "url": "https://disease.sh/v3/covid-19/countries/Sao Tome and Principe",
+      "api": "Worldometers"
+   },
+   "Saudi Arabia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Saudi Arabia",
+      "api": "Worldometers"
+   },
+   "Senegal": {
+      "url": "https://disease.sh/v3/covid-19/countries/Senegal",
+      "api": "Worldometers"
+   },
+   "Serbia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Serbia",
+      "api": "Worldometers"
+   },
+   "Seychelles": {
+      "url": "https://disease.sh/v3/covid-19/countries/Seychelles",
+      "api": "Worldometers"
+   },
+   "Sierra Leone": {
+      "url": "https://disease.sh/v3/covid-19/countries/Sierra Leone",
+      "api": "Worldometers"
+   },
+   "Singapore": {
+      "url": "https://disease.sh/v3/covid-19/countries/Singapore",
+      "api": "Worldometers"
+   },
+   "Sint Maarten": {
+      "url": "https://disease.sh/v3/covid-19/countries/Sint Maarten",
+      "api": "Worldometers"
+   },
+   "Slovakia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Slovakia",
+      "api": "Worldometers"
+   },
+   "Slovenia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Slovenia",
+      "api": "Worldometers"
+   },
+   "Solomon Islands": {
+      "url": "https://disease.sh/v3/covid-19/countries/Solomon Islands",
+      "api": "Worldometers"
+   },
+   "Somalia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Somalia",
+      "api": "Worldometers"
+   },
+   "South Africa": {
+      "url": "https://disease.sh/v3/covid-19/countries/South Africa",
+      "api": "Worldometers"
+   },
+   "South Sudan": {
+      "url": "https://disease.sh/v3/covid-19/countries/South Sudan",
+      "api": "Worldometers"
+   },
+   "Spain": {
+      "url": "https://disease.sh/v3/covid-19/countries/Spain",
+      "api": "Worldometers"
+   },
+   "Sri Lanka": {
+      "url": "https://disease.sh/v3/covid-19/countries/Sri Lanka",
+      "api": "Worldometers"
+   },
+   "St. Barth": {
+      "url": "https://disease.sh/v3/covid-19/countries/St. Barth",
+      "api": "Worldometers"
+   },
+   "Sudan": {
+      "url": "https://disease.sh/v3/covid-19/countries/Sudan",
+      "api": "Worldometers"
+   },
+   "Suriname": {
+      "url": "https://disease.sh/v3/covid-19/countries/Suriname",
+      "api": "Worldometers"
+   },
+   "Swaziland": {
+      "url": "https://disease.sh/v3/covid-19/countries/Swaziland",
+      "api": "Worldometers"
+   },
+   "Sweden": {
+      "url": "https://disease.sh/v3/covid-19/countries/Sweden",
+      "api": "Worldometers"
+   },
+   "Switzerland": {
+      "url": "https://disease.sh/v3/covid-19/countries/Switzerland",
+      "api": "Worldometers"
+   },
+   "Syrian Arab Republic": {
+      "url": "https://disease.sh/v3/covid-19/countries/Syrian Arab Republic",
+      "api": "Worldometers"
+   },
+   "Taiwan": {
+      "url": "https://disease.sh/v3/covid-19/countries/Taiwan",
+      "api": "Worldometers"
+   },
+   "Tajikistan": {
+      "url": "https://disease.sh/v3/covid-19/countries/Tajikistan",
+      "api": "Worldometers"
+   },
+   "Tanzania": {
+      "url": "https://disease.sh/v3/covid-19/countries/Tanzania",
+      "api": "Worldometers"
+   },
+   "Thailand": {
+      "url": "https://disease.sh/v3/covid-19/countries/Thailand",
+      "api": "Worldometers"
+   },
+   "Timor-Leste": {
+      "url": "https://disease.sh/v3/covid-19/countries/Timor-Leste",
+      "api": "Worldometers"
+   },
+   "Togo": {
+      "url": "https://disease.sh/v3/covid-19/countries/Togo",
+      "api": "Worldometers"
+   },
+   "Trinidad and Tobago": {
+      "url": "https://disease.sh/v3/covid-19/countries/Trinidad and Tobago",
+      "api": "Worldometers"
+   },
+   "Tunisia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Tunisia",
+      "api": "Worldometers"
+   },
+   "Turkey": {
+      "url": "https://disease.sh/v3/covid-19/countries/Turkey",
+      "api": "Worldometers"
+   },
+   "Turks and Caicos Islands": {
+      "url": "https://disease.sh/v3/covid-19/countries/Turks and Caicos Islands",
+      "api": "Worldometers"
+   },
+   "UAE": {
+      "url": "https://disease.sh/v3/covid-19/countries/UAE",
+      "api": "Worldometers"
+   },
+   "United Kingdom": {
+      "url": "https://disease.sh/v3/covid-19/countries/UK",
+      "api": "Worldometers"
+   },
+   "USA": {
+      "url": "https://disease.sh/v3/covid-19/countries/USA",
+      "api": "Worldometers"
+   },
+   "Uganda": {
+      "url": "https://disease.sh/v3/covid-19/countries/Uganda",
+      "api": "Worldometers"
+   },
+   "Ukraine": {
+      "url": "https://disease.sh/v3/covid-19/countries/Ukraine",
+      "api": "Worldometers"
+   },
+   "Uruguay": {
+      "url": "https://disease.sh/v3/covid-19/countries/Uruguay",
+      "api": "Worldometers"
+   },
+   "Uzbekistan": {
+      "url": "https://disease.sh/v3/covid-19/countries/Uzbekistan",
+      "api": "Worldometers"
+   },
+   "Vanuatu": {
+      "url": "https://disease.sh/v3/covid-19/countries/Vanuatu",
+      "api": "Worldometers"
+   },
+   "Venezuela": {
+      "url": "https://disease.sh/v3/covid-19/countries/Venezuela",
+      "api": "Worldometers"
+   },
+   "Vietnam": {
+      "url": "https://disease.sh/v3/covid-19/countries/Vietnam",
+      "api": "Worldometers"
+   },
+   "Wallis and Futuna": {
+      "url": "https://disease.sh/v3/covid-19/countries/Wallis and Futuna",
+      "api": "Worldometers"
+   },
+   "Western Sahara": {
+      "url": "https://disease.sh/v3/covid-19/countries/Western Sahara",
+      "api": "Worldometers"
+   },
+   "Yemen": {
+      "url": "https://disease.sh/v3/covid-19/countries/Yemen",
+      "api": "Worldometers"
+   },
+   "Zambia": {
+      "url": "https://disease.sh/v3/covid-19/countries/Zambia",
+      "api": "Worldometers"
+   },
+   "Zimbabwe": {
+      "url": "https://disease.sh/v3/covid-19/countries/Zimbabwe",
+      "api": "Worldometers"
+   }
+}

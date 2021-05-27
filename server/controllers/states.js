@@ -19,14 +19,12 @@ export async function getStateDateStatistics(req, res) {
   // uppercase all the words in the state name Ex: new york -> New York
   const state = unformattedState.replace(/\b\w/g, (l) => l.toUpperCase());
   if (!Object.keys(statesCovid).includes(state)) {
-    console.log("here");
     res.status(400).json({
       message: `Cannot find covid data for ${state} or may be spelled incorrectly`,
     });
     return;
   }
   if (!isValidDate(date)) {
-    console.log("here");
     res.status(400).json({
       message: `${date} is an invalid date or is formatted incorrectly`,
     });

@@ -97,3 +97,76 @@ export function parseJHUCSSEStateCumulative(data, startDate, endDate) {
   });
   return { cases, deaths, recovered };
 }
+
+export function parseJHUCSSEStateDaily(data, startDate, endDate) {
+  const formatDate = (date) => {
+    const [month, day, year] = date.split("/");
+    return `${month}-${day}-${parseInt(year) + 2000}`;
+  };
+  const unformatDate = (date) => {
+    const [month, day, year] = date.split("-");
+    return `${month}/${day}/${parseInt(year) - 2000}`;
+  };
+  const dateInRange = (d) => {
+    const date = formatDate(d);
+    return (
+      dateToNumber(date) >= dateToNumber(startDate) &&
+      dateToNumber(date) <= dateToNumber(endDate)
+    );
+  };
+  const allDates = Object.keys(data[0].timeline.cases);
+  const datesInterested = allDates
+    .filter((date) => dateInRange(date))
+    .sort((date1, date2) => {
+      const a = dateToNumber(formatDate(date1));
+      const b = dateToNumber(formatDate(date2));
+
+      return a - b;
+    });
+
+  let cases = {};
+  let deaths = {};
+  let recovered = {};
+  let prevDate;
+  const EARLIEST_COVID_DATE = "1/22/20";
+  datesInterested.forEach((date, idx) => {
+    if (idx > 0) {
+      prevDate = datesInterested[idx - 1];
+    } else {
+      // idx == 0
+      if (date === EARLIEST_COVID_DATE) {
+        // there is no earlier date
+        prevDate = "";
+      } else {
+        // prevDate is outside of range of interested dates because it comes before the first date
+        prevDate = unformatDate(dateToYesterday(formatDate(date)));
+      }
+    }
+
+    const newCasesThisDay = data.reduce((acc, curCounty) => {
+      const countyYesterdayTotalCases =
+        prevDate === "" ? 0 : curCounty.timeline.cases[prevDate];
+      const countyTodayTotalCases = curCounty.timeline.cases[date];
+      const countyTodayNewCases =
+        countyTodayTotalCases - countyYesterdayTotalCases;
+      return acc + countyTodayNewCases;
+    }, 0);
+
+    const newDeathsThisDay = data.reduce((acc, curCounty) => {
+      const countyYesterdayTotalDeaths =
+        prevDate === "" ? 0 : curCounty.timeline.deaths[prevDate];
+      const countyTodayTotalDeaths = curCounty.timeline.deaths[date];
+      const countyTodayNewDeaths =
+        countyTodayTotalDeaths - countyYesterdayTotalDeaths;
+      return acc + countyTodayNewDeaths;
+    }, 0);
+
+    const newRecoveredThisDay = 0;
+
+    const hyphenDateFullYear = formatDate(date);
+    cases[hyphenDateFullYear] = newCasesThisDay;
+    deaths[hyphenDateFullYear] = newDeathsThisDay;
+    recovered[hyphenDateFullYear] = newRecoveredThisDay;
+  });
+  return { cases, deaths, recovered };
+}

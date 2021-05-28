@@ -119,6 +119,39 @@ export function dateToYesterday(date) {
   return `${month - 1}-${30}-${year}`;
 }
 
+export function validateDateRange(start, end) {
+  if (start !== undefined) {
+    // if a start date was given, validate it
+    if (!isValidDate(start)) {
+      return {
+        dateRangeIsValid: false,
+        message: `${start} is an invalid start date or is formatted incorrectly`,
+      };
+    }
+  }
+  if (end !== undefined) {
+    // if an end date wsa given, validate it
+    if (!isValidDate(end)) {
+      return {
+        dateRangeIsValid: false,
+        message: `${end} is an invalid end date or is formatted incorrectly`,
+      };
+    }
+  }
+  // both dates are valid dates
+  if (start !== undefined && end !== undefined) {
+    if (dateToNumber(start) > dateToNumber(end)) {
+      return {
+        dateRangeIsValid: false,
+        message: `${start} to ${end} is an invalid date range`,
+      };
+    }
+  }
+  return {
+    dateRangeIsValid: true,
+  };
+}
+
 /**
  *  function gets today's date as M-DD-YYYY
  */

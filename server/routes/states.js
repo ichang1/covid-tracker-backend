@@ -9,8 +9,8 @@ import {
 const router = express.Router();
 
 router.get("/", getStates);
-router.get("/:state/:date", getStateDateStatistics);
-router.get("/:state/cumulative/:dateRange", getStateCumulativeStatistics);
-router.get("/:state/daily/:dateRange", getStateDailyStatistics);
+router.get("/:state/date/:date", getStateDateStatistics);
+router.get("/:state/cumulative", getStateCumulativeStatistics);
+router.get("/:state/daily", getStateDailyStatistics);
 
 export default router;

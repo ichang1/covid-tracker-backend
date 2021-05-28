@@ -71,9 +71,9 @@ export function isValidDate(date) {
   }
 
   // date should be a valid date
-  const todayDate = getTodayDate();
+  const yesterdayDate = dateToYesterday(getTodayDate());
   const EARLIEST_COVID_DATE = "1-22-2020";
-  const LATEST_COVID_DATE = todayDate;
+  const LATEST_COVID_DATE = yesterdayDate;
   //check if date is too early or too late
   if (
     dateToNumber(date) < dateToNumber(EARLIEST_COVID_DATE) ||

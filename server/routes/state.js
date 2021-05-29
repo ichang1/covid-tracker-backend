@@ -4,7 +4,7 @@ import {
   getStateDateStatistics,
   getStateCumulativeStatistics,
   getStateDailyStatistics,
-} from "../controllers/states.js";
+} from "../controllers/state.js";
 
 const router = express.Router();
 

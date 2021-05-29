@@ -1,12 +1,12 @@
 import express from "express";
 import cors from "cors";
-import stateRoutes from "./routes/states.js";
+import stateRoutes from "./routes/state.js";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/states", stateRoutes);
+app.use("/state", stateRoutes);
 
 app.use("/", (req, res) => {
   res.send("This is the api for covid tracker");

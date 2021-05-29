@@ -20,7 +20,8 @@ export function getStates(req, res) {
 }
 
 export async function getStateDateStatistics(req, res) {
-  const { state: unformattedState, date } = req.params;
+  const { state: unformattedState } = req.params;
+  const { date: dateReq } = req.query;
   // uppercase all the words in the state name Ex: new york -> New York
   const state = unformattedState.replace(/\b\w/g, (l) => l.toUpperCase());
   if (!Object.keys(statesCovid).includes(state)) {
@@ -29,20 +30,27 @@ export async function getStateDateStatistics(req, res) {
     });
     return;
   }
-  if (!isValidDate(date)) {
-    res.status(400).json({
-      message: `${date} is an invalid date or is formatted incorrectly`,
-    });
-    return;
+  if (dateReq !== undefined) {
+    if (!isValidDate(dateReq)) {
+      res.status(400).json({
+        message: `${dateReq} is an invalid date or is formatted incorrectly`,
+      });
+      return;
+    }
   }
-
+  let date;
+  const yesterdayDate = dateToYesterday(getTodayDate());
+  if (dateReq === undefined) {
+    date = yesterdayDate;
+  } else {
+    date = dateReq;
+  }
   // state and date are valid
   const { worldometers_url, JHUCSSE_url } = statesCovid[state];
-  const yesterdayDate = dateToYesterday(getTodayDate());
   if (date === yesterdayDate) {
     try {
-      const apiRes = await axios.get(worldometers_url);
-      res.status(200).send(parseWorldometers(apiRes.data));
+      const apiRes = await axios.get(`${worldometers_url}?yesterday=true`);
+      res.status(200).send({ ...parseWorldometers(apiRes.data), date, state });
     } catch (_) {
       res.status(400).json({
         message: `Failed to get Covid-19 data for ${state} on ${date}`,
@@ -51,7 +59,9 @@ export async function getStateDateStatistics(req, res) {
   } else {
     try {
       const apiRes = await axios.get(JHUCSSE_url);
-      res.status(200).json(parseJHUCSSEState(apiRes.data, date));
+      res
+        .status(200)
+        .json({ ...parseJHUCSSEState(apiRes.data, date), date, state });
     } catch (_) {
       res.status(400).json({
         message: `Failed to get Covid-19 data for ${state} on ${date}`,
@@ -122,7 +132,7 @@ export async function getStateCumulativeStatistics(req, res) {
       return;
     }
   }
-  res.status(200).json(cumulativeData);
+  res.status(200).json({ ...cumulativeData, state, startDate, endDate });
 }
 
 export async function getStateDailyStatistics(req, res) {
@@ -185,5 +195,5 @@ export async function getStateDailyStatistics(req, res) {
       return;
     }
   }
-  res.status(200).json(dailyData);
+  res.status(200).json({ ...dailyData, state, startDate, endDate });
 }

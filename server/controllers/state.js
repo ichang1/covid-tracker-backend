@@ -19,7 +19,7 @@ export function getStates(req, res) {
   res.status(200).json(us_states);
 }
 
-export async function getStateDateStatistics(req, res) {
+export async function getStateDateCovidStatistics(req, res) {
   const { state: unformattedState } = req.params;
   const { date: dateReq } = req.query;
   // uppercase all the words in the state name Ex: new york -> New York
@@ -71,7 +71,7 @@ export async function getStateDateStatistics(req, res) {
   return;
 }
 
-export async function getStateCumulativeStatistics(req, res) {
+export async function getStateCumulativeCovidStatistics(req, res) {
   const { state: unformattedState } = req.params;
   const { start, end } = req.query;
   const state = unformattedState.replace(/\b\w/g, (l) => l.toUpperCase());
@@ -135,7 +135,7 @@ export async function getStateCumulativeStatistics(req, res) {
   res.status(200).json({ ...cumulativeData, state, startDate, endDate });
 }
 
-export async function getStateDailyStatistics(req, res) {
+export async function getStateDailyCovidStatistics(req, res) {
   const { state: unformattedState } = req.params;
   const { start, end } = req.query;
   const state = unformattedState.replace(/\b\w/g, (l) => l.toUpperCase());
@@ -196,4 +196,12 @@ export async function getStateDailyStatistics(req, res) {
     }
   }
   res.status(200).json({ ...dailyData, state, startDate, endDate });
+}
+
+export async function getStateDateVaccineStatistics(req, res) {
+  res.send("Date vaccine stats");
+}
+
+export async function getStateCumulativeVaccineStatistics(req, res) {
+  res.send("Cumulative vaccine stats");
 }

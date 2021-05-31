@@ -17,7 +17,7 @@ export function dateToNumber(date) {
  * @param {String} date M-D-YYYY
  * @returns boolean of whether date is valid date for api
  */
-export function isValidDate(date) {
+export function isValidDate(date, type = "covid") {
   if (date.split("-").length !== 3) {
     return false;
   }
@@ -72,12 +72,17 @@ export function isValidDate(date) {
 
   // date should be a valid date
   const yesterdayDate = dateToYesterday(getTodayDate());
-  const EARLIEST_COVID_DATE = "1-22-2020";
-  const LATEST_COVID_DATE = yesterdayDate;
+  const LATEST_DATE = yesterdayDate;
+  let EARLIEST_DATE;
+  if (type === "vaccine") {
+    EARLIEST_DATE = "12-1-2020";
+  } else {
+    EARLIEST_DATE = "1-22-2020";
+  }
   //check if date is too early or too late
   if (
-    dateToNumber(date) < dateToNumber(EARLIEST_COVID_DATE) ||
-    dateToNumber(date) > dateToNumber(LATEST_COVID_DATE)
+    dateToNumber(date) < dateToNumber(EARLIEST_DATE) ||
+    dateToNumber(date) > dateToNumber(LATEST_DATE)
   ) {
     return false;
   }

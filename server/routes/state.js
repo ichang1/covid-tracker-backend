@@ -1,16 +1,16 @@
 import express from "express";
 import {
   getStates,
-  getStateDateStatistics,
-  getStateCumulativeStatistics,
-  getStateDailyStatistics,
+  getStateDateCovidStatistics,
+  getStateCumulativeCovidStatistics,
+  getStateDailyCovidStatistics,
 } from "../controllers/state.js";
 
 const router = express.Router();
 
 router.get("/", getStates);
-router.get("/:state/date", getStateDateStatistics);
-router.get("/:state/cumulative", getStateCumulativeStatistics);
-router.get("/:state/daily", getStateDailyStatistics);
+router.get("/:state/covid/date", getStateDateCovidStatistics);
+router.get("/:state/covid/cumulative", getStateCumulativeCovidStatistics);
+router.get("/:state/covid/daily", getStateDailyCovidStatistics);
 
 export default router;

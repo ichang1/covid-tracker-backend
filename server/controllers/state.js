@@ -205,3 +205,7 @@ export async function getStateDateVaccineStatistics(req, res) {
 export async function getStateCumulativeVaccineStatistics(req, res) {
   res.send("Cumulative vaccine stats");
 }
+
+export async function getStateDailyVaccineStatistics(req, res) {
+  res.send("Daily vaccine stats");
+}

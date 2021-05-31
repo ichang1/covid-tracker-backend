@@ -9,9 +9,10 @@ import {
 } from "../utils/date.js";
 import {
   parseWorldometers,
-  parseJHUCSSEState,
+  parseJHUCSSEStateDate,
   parseJHUCSSEStateCumulative,
   parseJHUCSSEStateDaily,
+  parseRAPSStateDate,
 } from "../utils/parse.js";
 
 export function getStates(req, res) {
@@ -26,7 +27,7 @@ export async function getStateDateCovidStatistics(req, res) {
   const state = unformattedState.replace(/\b\w/g, (l) => l.toUpperCase());
   if (!Object.keys(statesCovid).includes(state)) {
     res.status(400).json({
-      message: `Cannot find covid data for ${state} or may be spelled incorrectly`,
+      message: `Cannot find Covid 19 data for ${state} or may be spelled incorrectly`,
     });
     return;
   }
@@ -61,7 +62,7 @@ export async function getStateDateCovidStatistics(req, res) {
       const apiRes = await axios.get(JHUCSSE_url);
       res
         .status(200)
-        .json({ ...parseJHUCSSEState(apiRes.data, date), date, state });
+        .json({ ...parseJHUCSSEStateDate(apiRes.data, date), date, state });
     } catch (_) {
       res.status(400).json({
         message: `Failed to get Covid-19 data for ${state} on ${date}`,
@@ -78,7 +79,7 @@ export async function getStateCumulativeCovidStatistics(req, res) {
 
   if (!Object.keys(statesCovid).includes(state)) {
     res.status(400).json({
-      message: `Cannot find covid data for ${state} or may be spelled incorrectly`,
+      message: `Cannot find Covid 19 data for ${state} or may be spelled incorrectly`,
     });
     return;
   }
@@ -142,7 +143,7 @@ export async function getStateDailyCovidStatistics(req, res) {
 
   if (!Object.keys(statesCovid).includes(state)) {
     res.status(400).json({
-      message: `Cannot find covid data for ${state} or may be spelled incorrectly`,
+      message: `Cannot find Covid 19 data for ${state} or may be spelled incorrectly`,
     });
     return;
   }
@@ -199,7 +200,44 @@ export async function getStateDailyCovidStatistics(req, res) {
 }
 
 export async function getStateDateVaccineStatistics(req, res) {
-  res.send("Date vaccine stats");
+  const { state: unformattedState } = req.params;
+  const { date: dateReq } = req.query;
+  // uppercase all the words in the state name Ex: new york -> New York
+  const state = unformattedState.replace(/\b\w/g, (l) => l.toUpperCase());
+  if (!Object.keys(statesCovid).includes(state)) {
+    res.status(400).json({
+      message: `Cannot find Covid 19 vaccine data for ${state} or may be spelled incorrectly`,
+    });
+    return;
+  }
+  if (dateReq !== undefined) {
+    if (!isValidDate(dateReq, "vaccine")) {
+      res.status(400).json({
+        message: `${dateReq} is an invalid date or is formatted incorrectly`,
+      });
+      return;
+    }
+  }
+  let date;
+  const yesterdayDate = dateToYesterday(getTodayDate());
+  if (dateReq === undefined) {
+    date = yesterdayDate;
+  } else {
+    date = dateReq;
+  }
+  // state and date are valid
+  const { vaccine: vaccine_url } = statesCovid[state];
+  try {
+    const apiRes = await axios.get(vaccine_url);
+    res
+      .status(200)
+      .json({ ...parseRAPSStateDate(apiRes.data, date), date, state });
+  } catch (_) {
+    res.status(400).json({
+      message: `Failed to get Covid-19 vaccine data for ${state} on ${date}`,
+    });
+  }
+  return;
 }
 
 export async function getStateCumulativeVaccineStatistics(req, res) {

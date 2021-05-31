@@ -13,7 +13,7 @@ export function parseWorldometers(data) {
   };
 }
 
-export function parseJHUCSSEState(data, date) {
+export function parseJHUCSSEStateDate(data, date) {
   const [month, day, year] = date.split("-");
   const newDate = [month, day, year % 1000].join("/");
   const [yesterdayMonth, yesterdayDay, yesterdayYear] =
@@ -169,4 +169,17 @@ export function parseJHUCSSEStateDaily(data, startDate, endDate) {
     recovered[hyphenDateFullYear] = newRecoveredThisDay;
   });
   return { cases, deaths, recovered };
+}
+
+export function parseRAPSStateDate(data, date) {
+  const [month, day, year] = date.split("-");
+  const newDate = [month, day, year % 1000].join("/");
+  const filteredDateStats = data.timeline.filter(
+    ({ date: d }) => d === newDate
+  );
+  if (filteredDateStats.length === 0) {
+    return { totalDoses: 0, todayDoes: 0 };
+  }
+  const { total: totalDoses, daily: todayDoses } = filteredDateStats[0];
+  return { totalDoses, todayDoses };
 }

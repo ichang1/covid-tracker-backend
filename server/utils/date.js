@@ -80,6 +80,7 @@ export function isValidDate(date, type = "covid") {
     EARLIEST_DATE = "1-22-2020";
   }
   //check if date is too early or too late
+  console.log(EARLIEST_DATE);
   if (
     dateToNumber(date) < dateToNumber(EARLIEST_DATE) ||
     dateToNumber(date) > dateToNumber(LATEST_DATE)
@@ -124,10 +125,10 @@ export function dateToYesterday(date) {
   return `${month - 1}-${30}-${year}`;
 }
 
-export function validateDateRange(start, end) {
+export function validateDateRange(start, end, type = "covid") {
   if (start !== undefined) {
     // if a start date was given, validate it
-    if (!isValidDate(start)) {
+    if (!isValidDate(start, type)) {
       return {
         dateRangeIsValid: false,
         message: `${start} is an invalid start date or is formatted incorrectly`,
@@ -136,7 +137,7 @@ export function validateDateRange(start, end) {
   }
   if (end !== undefined) {
     // if an end date was given, validate it
-    if (!isValidDate(end)) {
+    if (!isValidDate(end, type)) {
       return {
         dateRangeIsValid: false,
         message: `${end} is an invalid end date or is formatted incorrectly`,

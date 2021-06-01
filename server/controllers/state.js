@@ -253,7 +253,11 @@ export async function getStateCumulativeVaccineStatistics(req, res) {
     });
     return;
   }
-  const { dateRangeIsValid, message } = validateDateRange(start, end);
+  const { dateRangeIsValid, message } = validateDateRange(
+    start,
+    end,
+    "vaccine"
+  );
   if (!dateRangeIsValid) {
     res.status(400).json({ message });
     return;
@@ -290,7 +294,11 @@ export async function getStateDailyVaccineStatistics(req, res) {
     });
     return;
   }
-  const { dateRangeIsValid, message } = validateDateRange(start, end);
+  const { dateRangeIsValid, message } = validateDateRange(
+    start,
+    end,
+    "vaccine"
+  );
   if (!dateRangeIsValid) {
     res.status(400).json({ message });
     return;

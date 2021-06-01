@@ -1,5 +1,8 @@
+import { countriesCovid } from "../places/country.js";
+
 export function getCountries(req, res) {
-  res.send("List of all countries");
+  const countries = Object.keys(countriesCovid);
+  res.status(200).json({ countries });
 }
 
 export function getCountryDateCovidStatistics(req, res) {

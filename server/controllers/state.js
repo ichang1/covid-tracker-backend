@@ -1,5 +1,5 @@
 import axios from "axios";
-import { statesCovid } from "../utils/statesCovid.js";
+import { statesCovid } from "../places/states.js";
 import {
   isValidDate,
   dateToNumber,
@@ -15,7 +15,7 @@ import {
   parseRAPSStateDate,
   parseRAPSStateCumulative,
   parseRAPSStateDaily,
-} from "../utils/parse.js";
+} from "../utils/parseState.js";
 
 export function getStates(req, res) {
   const us_states = { states: Object.keys(statesCovid) };

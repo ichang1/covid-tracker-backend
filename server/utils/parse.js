@@ -183,3 +183,59 @@ export function parseRAPSStateDate(data, date) {
   const { total: totalDoses, daily: todayDoses } = filteredDateStats[0];
   return { totalDoses, todayDoses };
 }
+
+export function parseRAPSStateCumulative(data, startDate, endDate) {
+  const formatDate = (date) => {
+    const [month, day, year] = date.split("/");
+    return `${month}-${day}-${parseInt(year) + 2000}`;
+  };
+  const dateInRange = (d) => {
+    const date = formatDate(d);
+    return (
+      dateToNumber(date) >= dateToNumber(startDate) &&
+      dateToNumber(date) <= dateToNumber(endDate)
+    );
+  };
+  const datesInterested = data.timeline
+    .filter(({ date: d }) => dateInRange(d))
+    .sort(({ date: date1 }, { date: date2 }) => {
+      const a = dateToNumber(formatDate(date1));
+      const b = dateToNumber(formatDate(date2));
+
+      return a - b;
+    });
+  let cumulativeData = {};
+  datesInterested.forEach(({ total, date }) => {
+    const hyphenDateFullYear = formatDate(date);
+    cumulativeData[hyphenDateFullYear] = total;
+  });
+  return { dosesTotal: cumulativeData };
+}
+
+export function parseRAPSStateDaily(data, startDate, endDate) {
+  const formatDate = (date) => {
+    const [month, day, year] = date.split("/");
+    return `${month}-${day}-${parseInt(year) + 2000}`;
+  };
+  const dateInRange = (d) => {
+    const date = formatDate(d);
+    return (
+      dateToNumber(date) >= dateToNumber(startDate) &&
+      dateToNumber(date) <= dateToNumber(endDate)
+    );
+  };
+  const datesInterested = data.timeline
+    .filter(({ date: d }) => dateInRange(d))
+    .sort(({ date: date1 }, { date: date2 }) => {
+      const a = dateToNumber(formatDate(date1));
+      const b = dateToNumber(formatDate(date2));
+
+      return a - b;
+    });
+  let dailyData = {};
+  datesInterested.forEach(({ daily, date }) => {
+    const hyphenDateFullYear = formatDate(date);
+    dailyData[hyphenDateFullYear] = daily;
+  });
+  return { dosesDaily: dailyData };
+}

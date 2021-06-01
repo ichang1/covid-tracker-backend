@@ -13,6 +13,8 @@ import {
   parseJHUCSSEStateCumulative,
   parseJHUCSSEStateDaily,
   parseRAPSStateDate,
+  parseRAPSStateCumulative,
+  parseRAPSStateDaily,
 } from "../utils/parse.js";
 
 export function getStates(req, res) {
@@ -241,9 +243,75 @@ export async function getStateDateVaccineStatistics(req, res) {
 }
 
 export async function getStateCumulativeVaccineStatistics(req, res) {
-  res.send("Cumulative vaccine stats");
+  const { state: unformattedState } = req.params;
+  const { start, end } = req.query;
+  const state = unformattedState.replace(/\b\w/g, (l) => l.toUpperCase());
+
+  if (!Object.keys(statesCovid).includes(state)) {
+    res.status(400).json({
+      message: `Cannot find Covid 19 data for ${state} or may be spelled incorrectly`,
+    });
+    return;
+  }
+  const { dateRangeIsValid, message } = validateDateRange(start, end);
+  if (!dateRangeIsValid) {
+    res.status(400).json({ message });
+    return;
+  }
+  // valid state, start and end date
+  const EARLIEST_VACCINE_DATE = "12-1-2020";
+  const LATEST_VACCINE_DATE = dateToYesterday(getTodayDate());
+  const startDate = start === undefined ? EARLIEST_VACCINE_DATE : start;
+  const endDate = end === undefined ? LATEST_VACCINE_DATE : end;
+  const { vaccine: vaccine_url } = statesCovid[state];
+  try {
+    const apiRes = await axios.get(vaccine_url);
+    res.status(200).json({
+      ...parseRAPSStateCumulative(apiRes.data, startDate, endDate),
+      state,
+      startDate,
+      endDate,
+    });
+  } catch (_) {
+    res.status(400).json({
+      message: `Failed to get cumulative Covid-19 vaccine data for ${state} from ${startDate} to ${endDate}`,
+    });
+  }
 }
 
 export async function getStateDailyVaccineStatistics(req, res) {
-  res.send("Daily vaccine stats");
+  const { state: unformattedState } = req.params;
+  const { start, end } = req.query;
+  const state = unformattedState.replace(/\b\w/g, (l) => l.toUpperCase());
+
+  if (!Object.keys(statesCovid).includes(state)) {
+    res.status(400).json({
+      message: `Cannot find Covid 19 data for ${state} or may be spelled incorrectly`,
+    });
+    return;
+  }
+  const { dateRangeIsValid, message } = validateDateRange(start, end);
+  if (!dateRangeIsValid) {
+    res.status(400).json({ message });
+    return;
+  }
+  // valid state, start and end date
+  const EARLIEST_VACCINE_DATE = "12-1-2020";
+  const LATEST_VACCINE_DATE = dateToYesterday(getTodayDate());
+  const startDate = start === undefined ? EARLIEST_VACCINE_DATE : start;
+  const endDate = end === undefined ? LATEST_VACCINE_DATE : end;
+  const { vaccine: vaccine_url } = statesCovid[state];
+  try {
+    const apiRes = await axios.get(vaccine_url);
+    res.status(200).json({
+      ...parseRAPSStateDaily(apiRes.data, startDate, endDate),
+      state,
+      startDate,
+      endDate,
+    });
+  } catch (_) {
+    res.status(400).json({
+      message: `Failed to get daily Covid-19 vaccine data for ${state} from ${startDate} to ${endDate}`,
+    });
+  }
 }

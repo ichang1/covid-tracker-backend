@@ -135,7 +135,8 @@ export function validateDateRange(start, end) {
     }
   }
   if (end !== undefined) {
-    // if an end date wsa given, validate it
+    // if an end date was given, validate it
+    console.log(end, isValidDate(end));
     if (!isValidDate(end)) {
       return {
         dateRangeIsValid: false,
@@ -170,10 +171,6 @@ export function getTodayDate() {
 
 function stringIsInteger(string) {
   const digits = "0123456789".split("");
-  string.split("").forEach((char) => {
-    if (!digits.includes(char)) {
-      return false;
-    }
-  });
-  return true;
+
+  return string.split("").every((char) => digits.includes(char));
 }

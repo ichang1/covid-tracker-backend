@@ -46,7 +46,7 @@ if __name__ == '__main__':
         "https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=1&fullData=true")
     for c in vaccine_res.json():
         country_name = c["country"]
-        vaccine_url = f"https://disease.sh/v3/covid-19/vaccine/coverage/countries/{'%20'.join(country_name.split(' '))}?lastdays=30&fullData=true"
+        vaccine_url = f"https://disease.sh/v3/covid-19/vaccine/coverage/countries/{'%20'.join(country_name.split(' '))}?lastdays=all&fullData=true"
         if capitalize_words(country_name) in data.keys():
             data[capitalize_words(country_name)]['vaccine_url'] = vaccine_url
         elif country_name == "USA":

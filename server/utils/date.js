@@ -136,7 +136,6 @@ export function validateDateRange(start, end) {
   }
   if (end !== undefined) {
     // if an end date was given, validate it
-    console.log(end, isValidDate(end));
     if (!isValidDate(end)) {
       return {
         dateRangeIsValid: false,

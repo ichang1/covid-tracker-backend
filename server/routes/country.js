@@ -1,16 +1,26 @@
 import express from "express";
 import {
   getCountries,
-  getCountryDateStatistics,
-  getCountryCumulativeStatistics,
-  getCountryDailyStatistics,
+  getCountryDateCovidStatistics,
+  getCountryCumulativeCovidStatistics,
+  getCountryDailyCovidStatistics,
+  getCountryDateVaccineStatistics,
+  getCountryCumulativeVaccineStatistics,
+  getCountryDailyVaccineStatistics,
 } from "../controllers/country.js";
 
 const router = express.Router();
 
 router.get("/", getCountries);
-router.get("/:country/date", getCountryDateStatistics);
-router.get("/:country/cumulative", getCountryCumulativeStatistics);
-router.get("/:country/daily", getCountryDailyStatistics);
+router.get("/:country/covid/date", getCountryDateCovidStatistics);
+router.get("/:country/covid/cumulative", getCountryCumulativeCovidStatistics);
+router.get("/:country/covid/daily", getCountryDailyCovidStatistics);
+
+router.get("/:country/vaccine/date", getCountryDateVaccineStatistics);
+router.get(
+  "/:country/vaccine/cumulative",
+  getCountryCumulativeVaccineStatistics
+);
+router.get("/:country/vaccine/daily", getCountryDailyVaccineStatistics);
 
 export default router;

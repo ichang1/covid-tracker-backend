@@ -80,7 +80,6 @@ export function isValidDate(date, type = "covid") {
     EARLIEST_DATE = "1-22-2020";
   }
   //check if date is too early or too late
-  console.log(EARLIEST_DATE);
   if (
     dateToNumber(date) < dateToNumber(EARLIEST_DATE) ||
     dateToNumber(date) > dateToNumber(LATEST_DATE)

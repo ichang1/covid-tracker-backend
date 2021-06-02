@@ -8,7 +8,10 @@ import {
   validateDateRange,
 } from "../utils/date.js";
 
-import { parseJHUCSSECountryDate } from "../utils/parseCountry.js";
+import {
+  parseJHUCSSECountryDate,
+  parseJHUCSSECountryCumulative,
+} from "../utils/parseCountry.js";
 
 export function getCountries(req, res) {
   const countries = Object.keys(countriesCovid);
@@ -55,8 +58,41 @@ export async function getCountryDateCovidStatistics(req, res) {
   }
 }
 
-export function getCountryCumulativeCovidStatistics(req, res) {
-  res.send("Country cumulative covid data");
+export async function getCountryCumulativeCovidStatistics(req, res) {
+  const { country: unformattedCountry } = req.params;
+  const { start, end } = req.query;
+  const country = unformattedCountry.replace(/\b\w/g, (l) => l.toUpperCase());
+
+  if (!Object.keys(countriesCovid).includes(country)) {
+    res.status(400).json({
+      message: `Cannot find Covid 19 data for ${country} or may be spelled incorrectly`,
+    });
+    return;
+  }
+  const { dateRangeIsValid, message } = validateDateRange(start, end);
+  if (!dateRangeIsValid) {
+    res.status(400).json({ message });
+    return;
+  }
+  // valid country, start and end date
+  const EARLIEST_COVID_DATE = "1-22-2020";
+  const LATEST_COVID_DATE = dateToYesterday(getTodayDate());
+  const startDate = start === undefined ? EARLIEST_COVID_DATE : start;
+  const endDate = end === undefined ? LATEST_COVID_DATE : end;
+  const { JHUCSSE_url } = countriesCovid[country];
+  try {
+    const apiRes = await axios.get(JHUCSSE_url);
+    res.status(200).json({
+      ...parseJHUCSSECountryCumulative(apiRes.data, startDate, endDate),
+      country,
+      startDate,
+      endDate,
+    });
+  } catch (_) {
+    res.status(400).json({
+      message: `Failed to get Covid-19 cumulative data for ${country} from ${startDate} to ${endDate}`,
+    });
+  }
 }
 
 export function getCountryDailyCovidStatistics(req, res) {

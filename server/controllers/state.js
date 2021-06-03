@@ -29,7 +29,7 @@ export async function getStateDateCovidStatistics(req, res) {
   const state = unformattedState.replace(/\b\w/g, (l) => l.toUpperCase());
   if (!Object.keys(statesCovid).includes(state)) {
     res.status(400).json({
-      message: `Cannot find Covid 19 data for ${state} or may be spelled incorrectly`,
+      message: `Cannot find covid-19 data for ${state} or may be spelled incorrectly`,
     });
     return;
   }
@@ -56,7 +56,7 @@ export async function getStateDateCovidStatistics(req, res) {
       res.status(200).send({ ...parseWorldometers(apiRes.data), date, state });
     } catch (_) {
       res.status(400).json({
-        message: `Failed to get Covid-19 data for ${state} on ${date}`,
+        message: `Failed to get covid-19 data for ${state} on ${date}`,
       });
     }
   } else {
@@ -67,7 +67,7 @@ export async function getStateDateCovidStatistics(req, res) {
         .json({ ...parseJHUCSSEStateDate(apiRes.data, date), date, state });
     } catch (_) {
       res.status(400).json({
-        message: `Failed to get Covid-19 data for ${state} on ${date}`,
+        message: `Failed to get covid-19 data for ${state} on ${date}`,
       });
     }
   }
@@ -81,7 +81,7 @@ export async function getStateCumulativeCovidStatistics(req, res) {
 
   if (!Object.keys(statesCovid).includes(state)) {
     res.status(400).json({
-      message: `Cannot find Covid 19 data for ${state} or may be spelled incorrectly`,
+      message: `Cannot find covid-19 data for ${state} or may be spelled incorrectly`,
     });
     return;
   }
@@ -106,7 +106,7 @@ export async function getStateCumulativeCovidStatistics(req, res) {
     );
   } catch (_) {
     res.status(400).json({
-      message: `Failed to get cumulative Covid-19 data for ${state} from ${startDate} to ${endDate}`,
+      message: `Failed to get cumulative covid-19 data for ${state} from ${startDate} to ${endDate}`,
     });
     return;
   }
@@ -130,7 +130,7 @@ export async function getStateCumulativeCovidStatistics(req, res) {
       cumulativeData.recovered[endDate] = recentTotalRecovered;
     } catch (_) {
       res.status(400).json({
-        message: `Failed to get cumulative Covid-19 data for ${state} on ${endDate}`,
+        message: `Failed to get cumulative covid-19 data for ${state} on ${endDate}`,
       });
       return;
     }
@@ -145,7 +145,7 @@ export async function getStateDailyCovidStatistics(req, res) {
 
   if (!Object.keys(statesCovid).includes(state)) {
     res.status(400).json({
-      message: `Cannot find Covid 19 data for ${state} or may be spelled incorrectly`,
+      message: `Cannot find covid-19 data for ${state} or may be spelled incorrectly`,
     });
     return;
   }
@@ -171,7 +171,7 @@ export async function getStateDailyCovidStatistics(req, res) {
     );
   } catch (_) {
     res.status(400).json({
-      message: `Failed to get daily Covid-19 data for ${state} from ${startDate} to ${endDate}`,
+      message: `Failed to get daily covid-19 data for ${state} from ${startDate} to ${endDate}`,
     });
     return;
   }
@@ -193,7 +193,7 @@ export async function getStateDailyCovidStatistics(req, res) {
       dailyData.recovered[endDate] = todayRecovered;
     } catch (_) {
       res.status(400).json({
-        message: `Failed to get daily Covid-19 data for ${state} on ${endDate}`,
+        message: `Failed to get daily covid-19 data for ${state} on ${endDate}`,
       });
       return;
     }
@@ -208,7 +208,7 @@ export async function getStateDateVaccineStatistics(req, res) {
   const state = unformattedState.replace(/\b\w/g, (l) => l.toUpperCase());
   if (!Object.keys(statesCovid).includes(state)) {
     res.status(400).json({
-      message: `Cannot find Covid 19 vaccine data for ${state} or may be spelled incorrectly`,
+      message: `Cannot find covid-19 vaccine data for ${state} or may be spelled incorrectly`,
     });
     return;
   }
@@ -236,7 +236,7 @@ export async function getStateDateVaccineStatistics(req, res) {
       .json({ ...parseRAPSStateDate(apiRes.data, date), date, state });
   } catch (_) {
     res.status(400).json({
-      message: `Failed to get Covid-19 vaccine data for ${state} on ${date}`,
+      message: `Failed to get covid-19 vaccine data for ${state} on ${date}`,
     });
   }
   return;
@@ -249,7 +249,7 @@ export async function getStateCumulativeVaccineStatistics(req, res) {
 
   if (!Object.keys(statesCovid).includes(state)) {
     res.status(400).json({
-      message: `Cannot find Covid 19 data for ${state} or may be spelled incorrectly`,
+      message: `Cannot find covid-19 data for ${state} or may be spelled incorrectly`,
     });
     return;
   }
@@ -278,7 +278,7 @@ export async function getStateCumulativeVaccineStatistics(req, res) {
     });
   } catch (_) {
     res.status(400).json({
-      message: `Failed to get cumulative Covid-19 vaccine data for ${state} from ${startDate} to ${endDate}`,
+      message: `Failed to get cumulative covid-19 vaccine data for ${state} from ${startDate} to ${endDate}`,
     });
   }
 }
@@ -290,7 +290,7 @@ export async function getStateDailyVaccineStatistics(req, res) {
 
   if (!Object.keys(statesCovid).includes(state)) {
     res.status(400).json({
-      message: `Cannot find Covid 19 data for ${state} or may be spelled incorrectly`,
+      message: `Cannot find covid-19 data for ${state} or may be spelled incorrectly`,
     });
     return;
   }
@@ -319,7 +319,7 @@ export async function getStateDailyVaccineStatistics(req, res) {
     });
   } catch (_) {
     res.status(400).json({
-      message: `Failed to get daily Covid-19 vaccine data for ${state} from ${startDate} to ${endDate}`,
+      message: `Failed to get daily covid-19 vaccine data for ${state} from ${startDate} to ${endDate}`,
     });
   }
 }

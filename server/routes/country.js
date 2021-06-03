@@ -12,9 +12,12 @@ import {
 const router = express.Router();
 
 router.get("/", getCountries);
-router.get("/:country/covid/date", getCountryDateCovidStatistics);
-router.get("/:country/covid/cumulative", getCountryCumulativeCovidStatistics);
-router.get("/:country/covid/daily", getCountryDailyCovidStatistics);
+router.get("/:country/covid-19/date", getCountryDateCovidStatistics);
+router.get(
+  "/:country/covid-19/cumulative",
+  getCountryCumulativeCovidStatistics
+);
+router.get("/:country/covid-19/daily", getCountryDailyCovidStatistics);
 
 router.get("/:country/vaccine/date", getCountryDateVaccineStatistics);
 router.get(

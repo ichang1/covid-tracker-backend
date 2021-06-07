@@ -1,5 +1,6 @@
 import requests
 from jsonToFile import jsonToText
+from utils.capitalize_words import capitalize_words
 
 if __name__ == '__main__':
     data = {}
@@ -13,6 +14,6 @@ if __name__ == '__main__':
             place_data = {
                 'JHUCSSE_url': url,
             }
-            data[province] = place_data
+            data[capitalize_words(province)] = place_data
 
     jsonToText('./text/provincesCovid.txt', data)

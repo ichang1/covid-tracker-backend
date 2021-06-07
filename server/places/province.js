@@ -35,7 +35,7 @@ export const provinceCovid = {
   Goias: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Maranhao: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   "Mato Grosso": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Mato Grosso do Sul": {
+  "Mato Grosso Do Sul": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   "Minas Gerais": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
@@ -44,13 +44,13 @@ export const provinceCovid = {
   Parana: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Pernambuco: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Piaui: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Rio Grande do Norte": {
+  "Rio Grande Do Norte": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
-  "Rio Grande do Sul": {
+  "Rio Grande Do Sul": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
-  "Rio de Janeiro": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
+  "Rio De Janeiro": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Rondonia: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Roraima: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   "Santa Catarina": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
@@ -61,7 +61,7 @@ export const provinceCovid = {
   "British Columbia": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Manitoba: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   "New Brunswick": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Newfoundland and Labrador": {
+  "Newfoundland And Labrador": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   "Northwest Territories": {
@@ -81,7 +81,7 @@ export const provinceCovid = {
   Yukon: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Antofagasta: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Araucania: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Arica y Parinacota": {
+  "Arica Y Parinacota": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   Atacama: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
@@ -94,7 +94,7 @@ export const provinceCovid = {
   Maule: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Metropolitana: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Nuble: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  OHiggins: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
+  Ohiggins: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Tarapaca: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Valparaiso: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Anhui: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
@@ -151,19 +151,19 @@ export const provinceCovid = {
   Magdalena: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Meta: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Narino: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Norte de Santander": {
+  "Norte De Santander": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   Putumayo: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Quindio: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Risaralda: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "San Andres y Providencia": {
+  "San Andres Y Providencia": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   Santander: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Sucre: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Tolima: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Valle del Cauca": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
+  "Valle Del Cauca": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Vaupes: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Vichada: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   "Faroe Islands": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
@@ -176,11 +176,11 @@ export const provinceCovid = {
   "New Caledonia": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Reunion: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   "Saint Barthelemy": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Saint Pierre and Miquelon": {
+  "Saint Pierre And Miquelon": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   "St Martin": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Wallis and Futuna": {
+  "Wallis And Futuna": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   "Baden-Wurttemberg": {
@@ -207,7 +207,7 @@ export const provinceCovid = {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   Thuringen: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Andaman and Nicobar Islands": {
+  "Andaman And Nicobar Islands": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   "Andhra Pradesh": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
@@ -218,7 +218,7 @@ export const provinceCovid = {
   Bihar: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Chandigarh: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Chhattisgarh: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Dadra and Nagar Haveli and Daman and Diu": {
+  "Dadra And Nagar Haveli And Daman And Diu": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   Delhi: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
@@ -226,7 +226,7 @@ export const provinceCovid = {
   Gujarat: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Haryana: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   "Himachal Pradesh": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Jammu and Kashmir": {
+  "Jammu And Kashmir": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   Jharkhand: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
@@ -272,7 +272,7 @@ export const provinceCovid = {
   Sicilia: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Toscana: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Umbria: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Valle d'Aosta": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
+  "Valle D'Aosta": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Veneto: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Aichi: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Akita: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
@@ -330,7 +330,7 @@ export const provinceCovid = {
   Campeche: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Chiapas: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Chihuahua: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Ciudad de Mexico": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
+  "Ciudad De Mexico": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Coahuila: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Colima: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Durango: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
@@ -357,7 +357,7 @@ export const provinceCovid = {
   Yucatan: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Zacatecas: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Aruba: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Bonaire, Sint Eustatius and Saba": {
+  "Bonaire, Sint Eustatius And Saba": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   Curacao: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
@@ -373,7 +373,7 @@ export const provinceCovid = {
   Utrecht: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Zeeland: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   "Zuid-Holland": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Azad Jammu and Kashmir": {
+  "Azad Jammu And Kashmir": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   Balochistan: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
@@ -398,7 +398,7 @@ export const provinceCovid = {
   Lambayeque: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Lima: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Loreto: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Madre de Dios": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
+  "Madre De Dios": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Moquegua: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Pasco: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Piura: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
@@ -548,7 +548,7 @@ export const provinceCovid = {
   "Castilla - La Mancha": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
-  "Castilla y Leon": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
+  "Castilla Y Leon": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Catalonia: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Ceuta: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Extremadura: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
@@ -635,14 +635,14 @@ export const provinceCovid = {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   Gibraltar: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Isle of Man": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
+  "Isle Of Man": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   Montserrat: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
   "Northern Ireland": { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Saint Helena, Ascension and Tristan da Cunha": {
+  "Saint Helena, Ascension And Tristan Da Cunha": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   Scotland: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },
-  "Turks and Caicos Islands": {
+  "Turks And Caicos Islands": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },
   Wales: { JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse" },

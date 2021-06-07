@@ -11,8 +11,7 @@ if __name__ == '__main__':
         url = 'https://disease.sh/v3/covid-19/jhucsse'
         if country != 'US' and province != None and province != 'Unknown' and 'Princess' not in province:
             place_data = {
-                'url': url,
-                'api': api
+                'JHUCSSE_url': url,
             }
             data[province] = place_data
 

@@ -1,26 +1,29 @@
 import express from "express";
 import {
-  getStates,
-  getStateDateCovidStatistics,
-  getStateCumulativeCovidStatistics,
-  getStateDailyCovidStatistics,
-  getStateDateVaccineStatistics,
-  getStateCumulativeVaccineStatistics,
-  getStateDailyVaccineStatistics,
-} from "../controllers/state.js";
+  getProvinces,
+  getDateProvinceStatistics,
+  getProvinceCumulativeCovidStatistics,
+  getProvinceDailyCovidStatistics,
+  getProvinceDateVaccineStatistics,
+  getProvinceCumulativeVaccineStatistics,
+  getProvinceDailyVaccineStatistics,
+} from "../controllers/province.js";
 
 const router = express.Router();
 
-router.get("/", getStates);
-router.get("/:province/covid-19/date", getStateDateCovidStatistics);
-router.get("/:province/covid-19/cumulative", getStateCumulativeCovidStatistics);
-router.get("/:province/covid-19/daily", getStateDailyCovidStatistics);
+router.get("/", getProvinces);
+router.get("/:province/covid-19/date", getDateProvinceStatistics);
+router.get(
+  "/:province/covid-19/cumulative",
+  getProvinceCumulativeCovidStatistics
+);
+router.get("/:province/covid-19/daily", getProvinceDailyCovidStatistics);
 
-router.get("/:province/vaccine/date", getStateDateVaccineStatistics);
+router.get("/:province/vaccine/date", getProvinceDateVaccineStatistics);
 router.get(
   "/:province/vaccine/cumulative",
-  getStateCumulativeVaccineStatistics
+  getProvinceCumulativeVaccineStatistics
 );
-router.get("/:province/vaccine/daily", getStateDailyVaccineStatistics);
+router.get("/:province/vaccine/daily", getProvinceDailyVaccineStatistics);
 
 export default router;

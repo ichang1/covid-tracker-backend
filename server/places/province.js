@@ -1,4 +1,4 @@
-export const provinceCovid = {
+export const provincesCovid = {
   "Australian Capital Territory": {
     JHUCSSE_url: "https://disease.sh/v3/covid-19/jhucsse",
   },

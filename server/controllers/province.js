@@ -40,6 +40,8 @@ export async function getDateProvinceStatistics(req, res) {
   } else {
     date = dateReq;
   }
+  const { JHUCSSE_url } = provincesCovid[province];
+
   res.send(`province date covid ${province} ${date}`);
 }
 

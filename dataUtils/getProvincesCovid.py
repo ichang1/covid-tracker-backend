@@ -8,11 +8,10 @@ if __name__ == '__main__':
     for p in province_res.json():
         country = p['country']
         province = p['province']
-        api = 'JHUCSSE'
-        url = 'https://disease.sh/v3/covid-19/jhucsse'
         if country != 'US' and province != None and province != 'Unknown' and 'Princess' not in province:
+            url = f"https://disease.sh/v3/covid-19/historical/{'%20'.join(country.split(' '))}/{'%20'.join(province.split(' '))}?lastdays=all"
             place_data = {
-                'JHUCSSE_url': url,
+                'JHUCSSE_url': url
             }
             data[capitalize_words(province)] = place_data
 

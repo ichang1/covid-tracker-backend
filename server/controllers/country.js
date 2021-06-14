@@ -51,10 +51,10 @@ export async function getCountryDateCovidStatistics(req, res) {
   // state and date are valid
   const { JHUCSSE_url } = countriesCovid[country];
   try {
-    const apiRes = await axios.get(JHUCSSE_url);
+    const { data } = await axios.get(JHUCSSE_url);
     res
       .status(200)
-      .json({ ...parseJHUCSSECountryDate(apiRes.data, date), country, date });
+      .json({ ...parseJHUCSSECountryDate(data, date), country, date });
   } catch (_) {
     res.status(400).json({
       message: `Failed to get covid-19 data for ${country} on ${date}`,
@@ -85,9 +85,9 @@ export async function getCountryCumulativeCovidStatistics(req, res) {
   const endDate = end === undefined ? LATEST_COVID_DATE : end;
   const { JHUCSSE_url } = countriesCovid[country];
   try {
-    const apiRes = await axios.get(JHUCSSE_url);
+    const { data } = await axios.get(JHUCSSE_url);
     res.status(200).json({
-      ...parseJHUCSSECountryCumulative(apiRes.data, startDate, endDate),
+      ...parseJHUCSSECountryCumulative(data, startDate, endDate),
       country,
       startDate,
       endDate,
@@ -122,9 +122,9 @@ export async function getCountryDailyCovidStatistics(req, res) {
   const endDate = end === undefined ? LATEST_COVID_DATE : end;
   const { JHUCSSE_url } = countriesCovid[country];
   try {
-    const apiRes = await axios.get(JHUCSSE_url);
+    const { data } = await axios.get(JHUCSSE_url);
     res.status(200).json({
-      ...parseJHUCSSECountryDaily(apiRes.data, startDate, endDate),
+      ...parseJHUCSSECountryDaily(data, startDate, endDate),
       country,
       startDate,
       endDate,
@@ -164,10 +164,10 @@ export async function getCountryDateVaccineStatistics(req, res) {
   }
   const { vaccine_url } = countriesCovid[country];
   try {
-    const apiRes = await axios.get(vaccine_url);
+    const { data } = await axios.get(vaccine_url);
     res
       .status(200)
-      .json({ ...parseRAPSCountryDate(apiRes.data, date), country, date });
+      .json({ ...parseRAPSCountryDate(data, date), country, date });
   } catch (_) {
     res.status(400).json({
       message: `Failed to get covid-19 vaccine data for ${country} on ${date}`,
@@ -202,9 +202,9 @@ export async function getCountryCumulativeVaccineStatistics(req, res) {
   const endDate = end === undefined ? LATEST_COVID_DATE : end;
   const { vaccine_url } = countriesCovid[country];
   try {
-    const apiRes = await axios.get(vaccine_url);
+    const { data } = await axios.get(vaccine_url);
     res.status(200).json({
-      ...parseRAPSCountryCumulative(apiRes.data, startDate, endDate),
+      ...parseRAPSCountryCumulative(data, startDate, endDate),
       country,
       startDate,
       endDate,
@@ -243,9 +243,9 @@ export async function getCountryDailyVaccineStatistics(req, res) {
   const endDate = end === undefined ? LATEST_COVID_DATE : end;
   const { vaccine_url } = countriesCovid[country];
   try {
-    const apiRes = await axios.get(vaccine_url);
+    const { data } = await axios.get(vaccine_url);
     res.status(200).json({
-      ...parseRAPSCountryDaily(apiRes.data, startDate, endDate),
+      ...parseRAPSCountryDaily(data, startDate, endDate),
       country,
       startDate,
       endDate,

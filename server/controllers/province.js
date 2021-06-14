@@ -7,7 +7,14 @@ import {
   dateToYesterday,
   validateDateRange,
 } from "../utils/date.js";
-import {} from "../utils/parseProvince.js";
+import {
+  parseJHUCSSEProvinceDate,
+  parseJHUCSSEProvinceCumulative,
+  parseJHUCSSEProvinceDaily,
+  parseRAPSProvinceDate,
+  parseRAPSProvinceCumulative,
+  parseRAPSProvinceDaily,
+} from "../utils/parseProvince.js";
 
 export function getProvinces(req, res) {
   const provinces = { provinces: Object.keys(provincesCovid) };
@@ -41,8 +48,16 @@ export async function getDateProvinceStatistics(req, res) {
     date = dateReq;
   }
   const { JHUCSSE_url } = provincesCovid[province];
-
-  res.send(`province date covid ${province} ${date}`);
+  try {
+    const { data } = await axios.get(JHUCSSE_url);
+    res
+      .status(200)
+      .json({ ...parseJHUCSSEProvinceDate(data, date), province, date });
+  } catch (_) {
+    res.status(400).json({
+      message: `Failed to get Covid-19 data for ${province} on ${date}`,
+    });
+  }
 }
 
 export async function getProvinceCumulativeCovidStatistics(req, res) {

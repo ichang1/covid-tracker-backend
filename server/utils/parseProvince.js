@@ -20,7 +20,7 @@ export function parseJHUCSSEProvinceDate(data, date) {
 
   const EARLIEST_COVID_DATE = "1-22-2020";
   const hasValidYesterdayDate =
-    dateToNumber(formatDate(date)) > dateToNumber(EARLIEST_COVID_DATE);
+    dateToNumber(formatDate(date)) >= dateToNumber(EARLIEST_COVID_DATE);
   const yesterdayTotalCases = hasValidYesterdayDate
     ? data.timeline.cases[yesterdayDate]
     : 0;
@@ -161,7 +161,7 @@ export function parseRAPSProvinceDate(data, date) {
   return { totalDoses, todayDoses };
 }
 
-export function parseRAPSCountryCumulative(data, startDate, endDate) {
+export function parseRAPSProvinceCumulative(data, startDate, endDate) {
   const formatDate = (date) => {
     const [month, day, year] = date.split("/");
     return `${month}-${day}-${parseInt(year) + 2000}`;

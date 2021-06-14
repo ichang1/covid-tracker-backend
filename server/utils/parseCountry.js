@@ -20,7 +20,7 @@ export function parseJHUCSSECountryDate(data, date) {
 
   const EARLIEST_COVID_DATE = "1-22-2020";
   const hasValidYesterdayDate =
-    dateToNumber(formatDate(date)) > dateToNumber(EARLIEST_COVID_DATE);
+    dateToNumber(formatDate(date)) >= dateToNumber(EARLIEST_COVID_DATE);
   const yesterdayTotalCases = hasValidYesterdayDate
     ? data.timeline.cases[yesterdayDate]
     : 0;

@@ -81,9 +81,20 @@ export async function getProvinceCumulativeCovidStatistics(req, res) {
   const LATEST_COVID_DATE = dateToYesterday(getTodayDate());
   const startDate = start === undefined ? EARLIEST_COVID_DATE : start;
   const endDate = end === undefined ? LATEST_COVID_DATE : end;
-  res.send(
-    `province cumulative covid data ${province} ${startDate} ${endDate}`
-  );
+  const { JHUCSSE_url } = provincesCovid[province];
+  try {
+    const { data } = await axios.get(JHUCSSE_url);
+    res.status(200).json({
+      ...parseJHUCSSEProvinceCumulative(data, startDate, endDate),
+      province,
+      startDate,
+      endDate,
+    });
+  } catch (_) {
+    res.status(400).json({
+      message: `Failed to get cumulative Covid-19 data for ${province} from ${startDate} to ${endDate}`,
+    });
+  }
 }
 
 export async function getProvinceDailyCovidStatistics(req, res) {

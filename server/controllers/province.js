@@ -160,7 +160,11 @@ export async function getProvinceDateVaccineStatistics(req, res) {
   } else {
     date = dateReq;
   }
-  res.send(`province date vaccine ${province} ${date}`);
+  res.status(200).json({
+    ...parseRAPSProvinceDate({}, date),
+    province,
+    date,
+  });
 }
 
 export async function getProvinceCumulativeVaccineStatistics(req, res) {
@@ -184,13 +188,16 @@ export async function getProvinceCumulativeVaccineStatistics(req, res) {
     return;
   }
   // valid state, start and end date
-  const EARLIEST_COVID_DATE = "1-22-2020";
-  const LATEST_COVID_DATE = dateToYesterday(getTodayDate());
-  const startDate = start === undefined ? EARLIEST_COVID_DATE : start;
-  const endDate = end === undefined ? LATEST_COVID_DATE : end;
-  res.send(
-    `province cumulative vaccine data ${province} ${startDate} ${endDate}`
-  );
+  const EARLIEST_VACCINE_DATE = "12-1-2020";
+  const LATEST_VACCINE_DATE = dateToYesterday(getTodayDate());
+  const startDate = start === undefined ? EARLIEST_VACCINE_DATE : start;
+  const endDate = end === undefined ? LATEST_VACCINE_DATE : end;
+  res.status(200).json({
+    ...parseRAPSProvinceCumulative({}, startDate, endDate),
+    province,
+    startDate,
+    endDate,
+  });
 }
 
 export async function getProvinceDailyVaccineStatistics(req, res) {
@@ -214,9 +221,14 @@ export async function getProvinceDailyVaccineStatistics(req, res) {
     return;
   }
   // valid state, start and end date
-  const EARLIEST_COVID_DATE = "1-22-2020";
-  const LATEST_COVID_DATE = dateToYesterday(getTodayDate());
-  const startDate = start === undefined ? EARLIEST_COVID_DATE : start;
-  const endDate = end === undefined ? LATEST_COVID_DATE : end;
-  res.send(`province daily vaccine data ${province} ${startDate} ${endDate}`);
+  const EARLIEST_VACCINE_DATE = "12-1-2020";
+  const LATEST_VACCINE_DATE = dateToYesterday(getTodayDate());
+  const startDate = start === undefined ? EARLIEST_VACCINE_DATE : start;
+  const endDate = end === undefined ? LATEST_VACCINE_DATE : end;
+  res.status(200).json({
+    ...parseRAPSProvinceDaily({}, startDate, endDate),
+    province,
+    startDate,
+    endDate,
+  });
 }

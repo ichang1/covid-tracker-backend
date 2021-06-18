@@ -196,7 +196,7 @@ export async function getCountryCumulativeVaccineStatistics(req, res) {
     return;
   }
   // valid country, start and end date
-  const EARLIEST_COVID_DATE = "1-22-2020";
+  const EARLIEST_COVID_DATE = "12-1-2020";
   const LATEST_COVID_DATE = dateToYesterday(getTodayDate());
   const startDate = start === undefined ? EARLIEST_COVID_DATE : start;
   const endDate = end === undefined ? LATEST_COVID_DATE : end;
@@ -237,7 +237,7 @@ export async function getCountryDailyVaccineStatistics(req, res) {
     return;
   }
   // valid country, start and end date
-  const EARLIEST_COVID_DATE = "1-22-2020";
+  const EARLIEST_COVID_DATE = "12-1-2020";
   const LATEST_COVID_DATE = dateToYesterday(getTodayDate());
   const startDate = start === undefined ? EARLIEST_COVID_DATE : start;
   const endDate = end === undefined ? LATEST_COVID_DATE : end;

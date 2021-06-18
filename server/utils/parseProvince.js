@@ -149,16 +149,10 @@ export function parseJHUCSSEProvinceDaily(data, startDate, endDate) {
 }
 
 export function parseRAPSProvinceDate(data, date) {
-  const [month, day, year] = date.split("-");
-  const newDate = [month, day, year % 1000].join("/");
-  const filteredDateStats = data.timeline.filter(
-    ({ date: d }) => d === newDate
-  );
-  if (filteredDateStats.length === 0) {
-    return { totalDoses: 0, todayDoes: 0 };
-  }
-  const { total: totalDoses, daily: todayDoses } = filteredDateStats[0];
-  return { totalDoses, todayDoses };
+  return {
+    totalDoses: 0,
+    todayDoses: 0,
+  };
 }
 
 export function parseRAPSProvinceCumulative(data, startDate, endDate) {
@@ -173,18 +167,35 @@ export function parseRAPSProvinceCumulative(data, startDate, endDate) {
       dateToNumber(date) <= dateToNumber(endDate)
     );
   };
-  const datesInterested = data.timeline
-    .filter(({ date: d }) => dateInRange(d))
-    .sort(({ date: date1 }, { date: date2 }) => {
-      const a = dateToNumber(formatDate(date1));
-      const b = dateToNumber(formatDate(date2));
+  // const datesInterested = data.timeline
+  //   .filter(({ date: d }) => dateInRange(d))
+  //   .sort(({ date: date1 }, { date: date2 }) => {
+  //     const a = dateToNumber(formatDate(date1));
+  //     const b = dateToNumber(formatDate(date2));
 
-      return a - b;
-    });
+  //     return a - b;
+  //   });
+
+  // datesInterested.forEach(({ total, date }) => {
+  //   const hyphenDateFullYear = formatDate(date);
+  //   cumulativeData[hyphenDateFullYear] = total;
+  // });
+
   let cumulativeData = {};
-  datesInterested.forEach(({ total, date }) => {
-    const hyphenDateFullYear = formatDate(date);
-    cumulativeData[hyphenDateFullYear] = total;
+  let curDate = endDate;
+  let datesInterestedUnsorted = [];
+  while (dateInRange(curDate)) {
+    datesInterestedUnsorted.push(curDate);
+    curDate = dateToYesterday(curDate);
+  }
+  const datesInterested = datesInterestedUnsorted.sort((date1, date2) => {
+    const a = dateToNumber(date1);
+    const b = dateToNumber(date2);
+
+    return a - b;
+  });
+  datesInterested.forEach((date) => {
+    cumulativeData[date] = 0;
   });
   return { dosesTotal: cumulativeData };
 }
@@ -201,18 +212,36 @@ export function parseRAPSProvinceDaily(data, startDate, endDate) {
       dateToNumber(date) <= dateToNumber(endDate)
     );
   };
-  const datesInterested = data.timeline
-    .filter(({ date: d }) => dateInRange(d))
-    .sort(({ date: date1 }, { date: date2 }) => {
-      const a = dateToNumber(formatDate(date1));
-      const b = dateToNumber(formatDate(date2));
+  // const datesInterested = data.timeline
+  //   .filter(({ date: d }) => dateInRange(d))
+  //   .sort(({ date: date1 }, { date: date2 }) => {
+  //     const a = dateToNumber(formatDate(date1));
+  //     const b = dateToNumber(formatDate(date2));
 
-      return a - b;
-    });
+  //     return a - b;
+  //   });
+
+  // datesInterested.forEach(({ daily, date }) => {
+  //   const hyphenDateFullYear = formatDate(date);
+  //   dailyData[hyphenDateFullYear] = daily;
+  // });
+
   let dailyData = {};
-  datesInterested.forEach(({ daily, date }) => {
-    const hyphenDateFullYear = formatDate(date);
-    dailyData[hyphenDateFullYear] = daily;
+  let curDate = endDate;
+  let datesInterestedUnsorted = [];
+  while (dateInRange(curDate)) {
+    datesInterestedUnsorted.push(curDate);
+    curDate = dateToYesterday(curDate);
+  }
+  const datesInterested = datesInterestedUnsorted.sort((date1, date2) => {
+    const a = dateToNumber(date1);
+    const b = dateToNumber(date2);
+
+    return a - b;
   });
+  datesInterested.forEach((date) => {
+    dailyData[date] = 0;
+  });
+
   return { dosesDaily: dailyData };
 }

@@ -104,7 +104,7 @@ export function dateToYesterday(date) {
   }
   // day == 1
   if (month === 1) {
-    return `${12}${31}${year - 1}`;
+    return `${12}-${31}-${year - 1}`;
   }
   // day == 1 and month > 1
   if (month === 3) {

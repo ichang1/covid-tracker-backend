@@ -6,7 +6,7 @@
 export function dateToNumber(date) {
   // Ex: 1-7-2020 -> 20200107
   // Ex: 10-11-2020 -> 20201011
-  const [month, day, year] = date.split("-");
+  const [month, day, year] = date.split("-").map((int) => parseInt(int));
   const monthString = parseInt(month) < 10 ? `0${month}` : `${month}`;
   const dayString = parseInt(day) < 10 ? `0${day}` : `${day}`;
   return parseInt(`${year}${monthString}${dayString}`);
@@ -69,7 +69,6 @@ export function isValidDate(date, type = "covid") {
   if (parseInt(year) < 0) {
     return false;
   }
-
   // date should be a valid date
   const yesterdayDate = dateToYesterday(getTodayDate());
   const LATEST_DATE = yesterdayDate;
@@ -172,4 +171,9 @@ function stringIsInteger(string) {
   const digits = "0123456789".split("");
 
   return string.split("").every((char) => digits.includes(char));
+}
+
+export function cleanDate(date) {
+  const [month, day, year] = date.split("-").map((intStr) => parseInt(intStr));
+  return `${month}-${day}-${year}`;
 }

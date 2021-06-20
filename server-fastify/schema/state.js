@@ -67,11 +67,11 @@ export const getCovidStateCumulativeOrDailyStatOpts = {
       state: { type: "string", description: "State name" },
     },
     querystring: {
-      startDate: {
+      start: {
         type: "string",
         description: "Date later than or equal to January 22, 2020",
       },
-      endDate: {
+      end: {
         type: "string",
         description: "End date",
       },
@@ -80,14 +80,7 @@ export const getCovidStateCumulativeOrDailyStatOpts = {
       200: {
         description: "Status OK",
         type: "object",
-        required: [
-          "cases",
-          "deaths",
-          "recovered",
-          "state",
-          "startDate",
-          "endDate",
-        ],
+        required: ["cases", "deaths", "recovered", "state", "start", "end"],
         properties: {
           cases: {
             type: "object",
@@ -105,8 +98,8 @@ export const getCovidStateCumulativeOrDailyStatOpts = {
             example: { "MM-DD-YYYY": 0 },
           },
           state: { type: "string" },
-          startDate: { type: "string", example: "MM-DD-YYYY" },
-          endDate: { type: "string", example: "MM-DD-YYYY" },
+          start: { type: "string", example: "MM-DD-YYYY" },
+          end: { type: "string", example: "MM-DD-YYYY" },
         },
       },
     },
@@ -148,11 +141,11 @@ export const getVaccineStateCumulativeOrDailyStatOpts = {
       state: { type: "string", description: "State name" },
     },
     querystring: {
-      startDate: {
+      start: {
         type: "string",
         description: "Date later than or equal to December 1, 2020",
       },
-      endDate: {
+      end: {
         type: "string",
         description: "End date",
       },
@@ -161,7 +154,7 @@ export const getVaccineStateCumulativeOrDailyStatOpts = {
       200: {
         description: "Status OK",
         type: "object",
-        required: ["doses", "state", "startDate", "endDate"],
+        required: ["doses", "state", "start", "end"],
         properties: {
           doses: {
             type: "object",
@@ -169,8 +162,8 @@ export const getVaccineStateCumulativeOrDailyStatOpts = {
             example: { "MM-DD-YYYY": 0 },
           },
           state: { type: "string" },
-          startDate: { type: "string", example: "MM-DD-YYYY" },
-          endDate: { type: "string", example: "MM-DD-YYYY" },
+          start: { type: "string", example: "MM-DD-YYYY" },
+          end: { type: "string", example: "MM-DD-YYYY" },
         },
       },
     },

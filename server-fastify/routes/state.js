@@ -5,14 +5,32 @@ import {
   getStateDailyCovidStatistics,
 } from "../controllers/state.js";
 
+import {
+  getCovidStateOpts,
+  getCovidStateDateStatOpts,
+  getCovidStateCumulativeOrDailyStatOpts,
+} from "../schema/state.js";
+
 export function stateCovidRoutes(fastify, options, done) {
-  fastify.get("/state", getStates);
+  fastify.get("/state", getCovidStateOpts, getStates);
 
-  fastify.get("/state/:state/date", getStateDateCovidStatistics);
+  fastify.get(
+    "/state/:state/date",
+    getCovidStateDateStatOpts,
+    getStateDateCovidStatistics
+  );
 
-  fastify.get("/state/:state/cumulative", getStateCumulativeCovidStatistics);
+  fastify.get(
+    "/state/:state/cumulative",
+    getCovidStateCumulativeOrDailyStatOpts,
+    getStateCumulativeCovidStatistics
+  );
 
-  fastify.get("/state/:state/daily", getStateDailyCovidStatistics);
+  fastify.get(
+    "/state/:state/daily",
+    getCovidStateCumulativeOrDailyStatOpts,
+    getStateDailyCovidStatistics
+  );
 
   done();
 }

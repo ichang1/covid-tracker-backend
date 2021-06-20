@@ -1,7 +1,9 @@
 export const getProvinceOpts = {
   schema: {
+    tags: ["Province Covid-19 and vaccine"],
     response: {
       200: {
+        description: "Status OK",
         type: "object",
         required: ["provinces"],
         properties: {
@@ -19,8 +21,19 @@ export const getProvinceOpts = {
 
 export const getCovidProvinceDateStatOpts = {
   schema: {
+    tags: ["Province Covid-19 and vaccine"],
+    params: {
+      province: { type: "string", description: "Province name" },
+    },
+    querystring: {
+      date: {
+        type: "string",
+        description: "Date later than or equal to January 22, 2020",
+      },
+    },
     response: {
       200: {
+        description: "Status OK",
         type: "object",
         required: [
           "totalCases",
@@ -39,7 +52,7 @@ export const getCovidProvinceDateStatOpts = {
           todayDeaths: { type: "integer" },
           totalRecovered: { type: "integer" },
           todayRecovered: { type: "integer" },
-          date: { type: "string" },
+          date: { type: "string", example: "MM-DD-YYYY" },
           province: { type: "string" },
         },
       },
@@ -49,8 +62,23 @@ export const getCovidProvinceDateStatOpts = {
 
 export const getCovidProvinceCumulativeOrDailyStatOpts = {
   schema: {
+    tags: ["Province Covid-19 and vaccine"],
+    params: {
+      province: { type: "string", description: "Province name" },
+    },
+    querystring: {
+      startDate: {
+        type: "string",
+        description: "Date later than or equal to January 22, 2020",
+      },
+      endDate: {
+        type: "string",
+        description: "End date",
+      },
+    },
     response: {
       200: {
+        description: "Status OK",
         type: "object",
         required: [
           "cases",
@@ -61,12 +89,24 @@ export const getCovidProvinceCumulativeOrDailyStatOpts = {
           "endDate",
         ],
         properties: {
-          cases: { type: "object", additionalProperties: true },
-          deaths: { type: "object", additionalProperties: true },
-          recovered: { type: "object", additionalProperties: true },
-          province: { type: "string", additionalProperties: true },
-          startDate: { type: "string", additionalProperties: true },
-          endDate: { type: "string", additionalProperties: true },
+          cases: {
+            type: "object",
+            additionalProperties: true,
+            example: { "MM-DD-YYYY": 0 },
+          },
+          deaths: {
+            type: "object",
+            additionalProperties: true,
+            example: { "MM-DD-YYYY": 0 },
+          },
+          recovered: {
+            type: "object",
+            additionalProperties: true,
+            example: { "MM-DD-YYYY": 0 },
+          },
+          province: { type: "string" },
+          startDate: { type: "string", example: "MM-DD-YYYY" },
+          endDate: { type: "string", example: "MM-DD-YYYY" },
         },
       },
     },
@@ -75,13 +115,37 @@ export const getCovidProvinceCumulativeOrDailyStatOpts = {
 
 export const getVaccineProvinceDateStatOpts = {
   schema: {
+    tags: ["Province Covid-19 and vaccine"],
+    params: {
+      province: { type: "string", description: "Province name" },
+    },
+    querystring: {
+      startDate: {
+        type: "string",
+        description: "Date later than or equal to December 1, 2020",
+      },
+      endDate: {
+        type: "string",
+        description: "End date",
+      },
+    },
     response: {
       200: {
+        description: "Status OK",
         type: "object",
-        required: ["totalDoses", "todayDoses"],
+        required: [
+          "totalDoses",
+          "todayDoses",
+          "province",
+          "startDate",
+          "endDate",
+        ],
         properties: {
           totalDoses: { type: "integer" },
           todayDoses: { type: "integer" },
+          province: { type: "string" },
+          startDate: { type: "string", example: "MM-DD-YYYY" },
+          endDate: { type: "string", example: "MM-DD-YYYY" },
         },
       },
     },
@@ -90,15 +154,34 @@ export const getVaccineProvinceDateStatOpts = {
 
 export const getVaccineProvinceCumulativeOrDailyStatOpts = {
   schema: {
+    tags: ["Province Covid-19 and vaccine"],
+    params: {
+      country: { type: "string", description: "Province name" },
+    },
+    querystring: {
+      startDate: {
+        type: "string",
+        description: "Date later than or equal to December 1, 2020",
+      },
+      endDate: {
+        type: "string",
+        description: "End date",
+      },
+    },
     response: {
       200: {
+        description: "Status OK",
         type: "object",
         required: ["doses", "province", "startDate", "endDate"],
         properties: {
-          doses: { type: "object", additionalProperties: true },
+          doses: {
+            type: "object",
+            additionalProperties: true,
+            example: { "MM-DD-YYYY": 0 },
+          },
           province: { type: "string" },
-          startDate: { type: "string" },
-          endDate: { type: "string" },
+          startDate: { type: "string", example: "MM-DD-YYYY" },
+          endDate: { type: "string", example: "MM-DD-YYYY" },
         },
       },
     },

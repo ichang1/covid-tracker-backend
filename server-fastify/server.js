@@ -1,5 +1,6 @@
 import fastify from "fastify";
 import fastifyCors from "fastify-cors";
+import fastifySwagger from "fastify-swagger";
 
 import { stateCovidRoutes, stateVaccineRoutes } from "./routes/state.js";
 import {
@@ -7,15 +8,21 @@ import {
   provinceVaccineRoutes,
 } from "./routes/province.js";
 import { countryCovidRoutes, countryVaccineRoutes } from "./routes/country.js";
+import { swaggerSchema } from "./schema/swagger.js";
 
-const app = fastify({ logger: true });
+const server = fastify({ logger: true });
 
-app.register(fastifyCors, {
+server.register(fastifyCors, {
   origin: "*",
 });
 
+server.register(fastifySwagger, swaggerSchema);
+
 const routes = [
-  { route: stateCovidRoutes, prefix: "covid-19" },
+  {
+    route: stateCovidRoutes,
+    prefix: "covid-19",
+  },
   { route: stateVaccineRoutes, prefix: "vaccine" },
   { route: provinceCovidRoutes, prefix: "covid-19" },
   { route: provinceVaccineRoutes, prefix: "vaccine" },
@@ -23,17 +30,17 @@ const routes = [
   { route: countryVaccineRoutes, prefix: "vaccine" },
 ];
 
-routes.forEach(({ route, prefix }) => {
-  app.register(route, { prefix });
+routes.forEach(({ route, prefix }, i) => {
+  server.register(route, { prefix, description: i });
 });
 
 const PORT = process.env.PORT || 4000;
 
 async function start() {
   try {
-    await app.listen(PORT);
+    await server.listen(PORT);
   } catch (err) {
-    app.log.error(error);
+    server.log.error(err);
     process.exit(1);
   }
 }

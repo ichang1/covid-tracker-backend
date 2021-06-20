@@ -209,7 +209,7 @@ export function parseRAPSStateCumulative(data, startDate, endDate) {
     const hyphenDateFullYear = formatDate(date);
     cumulativeData[hyphenDateFullYear] = total;
   });
-  return { dosesTotal: cumulativeData };
+  return { doses: cumulativeData };
 }
 
 export function parseRAPSStateDaily(data, startDate, endDate) {
@@ -237,5 +237,5 @@ export function parseRAPSStateDaily(data, startDate, endDate) {
     const hyphenDateFullYear = formatDate(date);
     dailyData[hyphenDateFullYear] = daily;
   });
-  return { dosesDaily: dailyData };
+  return { doses: dailyData };
 }

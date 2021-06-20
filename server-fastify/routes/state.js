@@ -3,16 +3,21 @@ import {
   getStateDateCovidStatistics,
   getStateCumulativeCovidStatistics,
   getStateDailyCovidStatistics,
+  getStateDateVaccineStatistics,
+  getStateCumulativeVaccineStatistics,
+  getStateDailyVaccineStatistics,
 } from "../controllers/state.js";
 
 import {
-  getCovidStateOpts,
+  getStateOpts,
   getCovidStateDateStatOpts,
   getCovidStateCumulativeOrDailyStatOpts,
+  getVaccineStateDateStatOpts,
+  getVaccineStateCumulativeOrDailyStatOpts,
 } from "../schema/state.js";
 
 export function stateCovidRoutes(fastify, options, done) {
-  fastify.get("/state", getCovidStateOpts, getStates);
+  fastify.get("/state", getStateOpts, getStates);
 
   fastify.get(
     "/state/:state/date",
@@ -36,12 +41,25 @@ export function stateCovidRoutes(fastify, options, done) {
 }
 
 export function stateVaccineRoutes(fastify, options, done) {
-  fastify.get("/state", (req, reply) => {
-    reply.send("states for covid vaccine route");
-  });
-  fastify.get("/state/:state/date", (req, reply) => {
-    const { state } = req.params;
-    reply.send(`${state} covid vaccine route`);
-  });
+  fastify.get("/state", getStateOpts, getStates);
+
+  fastify.get(
+    "/state/:state/date",
+    getVaccineStateDateStatOpts,
+    getStateDateVaccineStatistics
+  );
+
+  fastify.get(
+    "/state/:state/cumulative",
+    getVaccineStateCumulativeOrDailyStatOpts,
+    getStateCumulativeVaccineStatistics
+  );
+
+  fastify.get(
+    "/state/:state/daily",
+    getVaccineStateCumulativeOrDailyStatOpts,
+    getStateDailyVaccineStatistics
+  );
+
   done();
 }

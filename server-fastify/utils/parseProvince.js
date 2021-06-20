@@ -197,7 +197,7 @@ export function parseRAPSProvinceCumulative(data, startDate, endDate) {
   datesInterested.forEach((date) => {
     cumulativeData[date] = 0;
   });
-  return { dosesTotal: cumulativeData };
+  return { doses: cumulativeData };
 }
 
 export function parseRAPSProvinceDaily(data, startDate, endDate) {
@@ -243,5 +243,5 @@ export function parseRAPSProvinceDaily(data, startDate, endDate) {
     dailyData[date] = 0;
   });
 
-  return { dosesDaily: dailyData };
+  return { doses: dailyData };
 }

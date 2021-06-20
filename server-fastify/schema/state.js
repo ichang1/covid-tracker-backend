@@ -1,4 +1,4 @@
-export const getCovidStateOpts = {
+export const getStateOpts = {
   schema: {
     response: {
       200: {
@@ -67,6 +67,38 @@ export const getCovidStateCumulativeOrDailyStatOpts = {
           state: { type: "string", additionalProperties: true },
           startDate: { type: "string", additionalProperties: true },
           endDate: { type: "string", additionalProperties: true },
+        },
+      },
+    },
+  },
+};
+
+export const getVaccineStateDateStatOpts = {
+  schema: {
+    response: {
+      200: {
+        type: "object",
+        required: ["totalDoses", "todayDoses"],
+        properties: {
+          totalDoses: { type: "integer" },
+          todayDoses: { type: "integer" },
+        },
+      },
+    },
+  },
+};
+
+export const getVaccineStateCumulativeOrDailyStatOpts = {
+  schema: {
+    response: {
+      200: {
+        type: "object",
+        required: ["doses", "state", "startDate", "endDate"],
+        properties: {
+          doses: { type: "object", additionalProperties: true },
+          state: { type: "string" },
+          startDate: { type: "string" },
+          endDate: { type: "string" },
         },
       },
     },

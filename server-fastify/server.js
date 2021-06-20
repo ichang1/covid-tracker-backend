@@ -6,6 +6,7 @@ import {
   provinceCovidRoutes,
   provinceVaccineRoutes,
 } from "./routes/province.js";
+import { countryCovidRoutes, countryVaccineRoutes } from "./routes/country.js";
 
 const app = fastify({ logger: true });
 
@@ -18,6 +19,8 @@ const routes = [
   { route: stateVaccineRoutes, prefix: "vaccine" },
   { route: provinceCovidRoutes, prefix: "covid-19" },
   { route: provinceVaccineRoutes, prefix: "vaccine" },
+  { route: countryCovidRoutes, prefix: "covid-19" },
+  { route: countryVaccineRoutes, prefix: "vaccine" },
 ];
 
 routes.forEach(({ route, prefix }) => {

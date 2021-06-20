@@ -88,8 +88,8 @@ export async function getProvinceCumulativeCovidStatistics(req, reply) {
     reply.code(200).send({
       ...parseJHUCSSEProvinceCumulative(data, startDate, endDate),
       province,
-      startDate,
-      endDate,
+      start: startDate,
+      end: endDate,
     });
   } catch (_) {
     reply.code(400).send({
@@ -126,8 +126,8 @@ export async function getProvinceDailyCovidStatistics(req, reply) {
     reply.code(200).send({
       ...parseJHUCSSEProvinceDaily(data, startDate, endDate),
       province,
-      startDate,
-      endDate,
+      start: startDate,
+      end: endDate,
     });
   } catch (_) {
     reply.code(400).send({
@@ -198,8 +198,8 @@ export async function getProvinceCumulativeVaccineStatistics(req, reply) {
   reply.code(200).send({
     ...parseRAPSProvinceCumulative({}, startDate, endDate),
     province,
-    startDate,
-    endDate,
+    start: startDate,
+    end: endDate,
   });
 }
 
@@ -232,7 +232,7 @@ export async function getProvinceDailyVaccineStatistics(req, reply) {
   reply.code(200).send({
     ...parseRAPSProvinceDaily({}, startDate, endDate),
     province,
-    startDate,
-    endDate,
+    start: startDate,
+    end: endDate,
   });
 }

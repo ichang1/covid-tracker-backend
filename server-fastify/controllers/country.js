@@ -90,8 +90,8 @@ export async function getCountryCumulativeCovidStatistics(req, reply) {
     reply.code(200).send({
       ...parseJHUCSSECountryCumulative(data, startDate, endDate),
       country,
-      startDate,
-      endDate,
+      start: startDate,
+      end: endDate,
     });
   } catch (_) {
     reply.code(400).send({
@@ -128,8 +128,8 @@ export async function getCountryDailyCovidStatistics(req, reply) {
     reply.code(200).send({
       ...parseJHUCSSECountryDaily(data, startDate, endDate),
       country,
-      startDate,
-      endDate,
+      start: startDate,
+      end: endDate,
     });
   } catch (_) {
     reply.code(400).send({
@@ -209,8 +209,8 @@ export async function getCountryCumulativeVaccineStatistics(req, reply) {
     reply.code(200).send({
       ...parseRAPSCountryCumulative(data, startDate, endDate),
       country,
-      startDate,
-      endDate,
+      start: startDate,
+      end: endDate,
     });
   } catch (_) {
     reply.code(400).send({
@@ -251,8 +251,8 @@ export async function getCountryDailyVaccineStatistics(req, reply) {
     reply.code(200).send({
       ...parseRAPSCountryDaily(data, startDate, endDate),
       country,
-      startDate,
-      endDate,
+      start: startDate,
+      end: endDate,
     });
   } catch (_) {
     reply.code(400).send({

@@ -139,7 +139,9 @@ export async function getStateCumulativeCovidStatistics(req, reply) {
       return;
     }
   }
-  reply.code(200).send({ ...cumulativeData, state, startDate, endDate });
+  reply
+    .code(200)
+    .send({ ...cumulativeData, state, start: startDate, end: endDate });
 }
 
 export async function getStateDailyCovidStatistics(req, reply) {
@@ -203,7 +205,7 @@ export async function getStateDailyCovidStatistics(req, reply) {
       return;
     }
   }
-  reply.code(200).send({ ...dailyData, state, startDate, endDate });
+  reply.code(200).send({ ...dailyData, state, start: startDate, end: endDate });
 }
 
 export async function getStateDateVaccineStatistics(req, reply) {
@@ -279,8 +281,8 @@ export async function getStateCumulativeVaccineStatistics(req, reply) {
     reply.code(200).send({
       ...parseRAPSStateCumulative(apireply.data, startDate, endDate),
       state,
-      startDate,
-      endDate,
+      start: startDate,
+      end: endDate,
     });
   } catch (_) {
     reply.code(400).send({
@@ -321,8 +323,8 @@ export async function getStateDailyVaccineStatistics(req, reply) {
     reply.code(200).send({
       ...parseRAPSStateDaily(apireply.data, startDate, endDate),
       state,
-      startDate,
-      endDate,
+      start: startDate,
+      end: endDate,
     });
   } catch (_) {
     reply.code(400).send({

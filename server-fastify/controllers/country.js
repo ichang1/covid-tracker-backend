@@ -17,25 +17,25 @@ import {
   parseRAPSCountryDaily,
 } from "../utils/parseCountry.js";
 
-export function getCountries(req, res) {
+export function getCountries(req, reply) {
   const countries = Object.keys(countriesCovid);
-  res.status(200).json({ countries });
+  reply.code(200).send({ countries });
 }
 
-export async function getCountryDateCovidStatistics(req, res) {
+export async function getCountryDateCovidStatistics(req, reply) {
   const { country: unformattedCountry } = req.params;
   const { date: dateReq } = req.query;
   // uppercase all the words in the state name Ex: new york -> New York
   const country = unformattedCountry.replace(/\b\w/g, (l) => l.toUpperCase());
   if (!Object.keys(countriesCovid).includes(country)) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Cannot find covid-19 data for ${country} or may be spelled incorrectly`,
     });
     return;
   }
   if (dateReq !== undefined) {
     if (!isValidDate(dateReq)) {
-      res.status(400).json({
+      reply.code(400).send({
         message: `${dateReq} is an invalid date or is formatted incorrectly`,
       });
       return;
@@ -52,30 +52,30 @@ export async function getCountryDateCovidStatistics(req, res) {
   const { JHUCSSE_url } = countriesCovid[country];
   try {
     const { data } = await axios.get(JHUCSSE_url);
-    res
-      .status(200)
-      .json({ ...parseJHUCSSECountryDate(data, date), country, date });
+    reply
+      .code(200)
+      .send({ ...parseJHUCSSECountryDate(data, date), country, date });
   } catch (_) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Failed to get covid-19 data for ${country} on ${date}`,
     });
   }
 }
 
-export async function getCountryCumulativeCovidStatistics(req, res) {
+export async function getCountryCumulativeCovidStatistics(req, reply) {
   const { country: unformattedCountry } = req.params;
   const { start, end } = req.query;
   const country = unformattedCountry.replace(/\b\w/g, (l) => l.toUpperCase());
 
   if (!Object.keys(countriesCovid).includes(country)) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Cannot find covid-19 data for ${country} or may be spelled incorrectly`,
     });
     return;
   }
   const { dateRangeIsValid, message } = validateDateRange(start, end);
   if (!dateRangeIsValid) {
-    res.status(400).json({ message });
+    reply.code(400).send({ message });
     return;
   }
   // valid country, start and end date
@@ -86,33 +86,33 @@ export async function getCountryCumulativeCovidStatistics(req, res) {
   const { JHUCSSE_url } = countriesCovid[country];
   try {
     const { data } = await axios.get(JHUCSSE_url);
-    res.status(200).json({
+    reply.code(200).send({
       ...parseJHUCSSECountryCumulative(data, startDate, endDate),
       country,
       startDate,
       endDate,
     });
   } catch (_) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Failed to get covid-19 cumulative data for ${country} from ${startDate} to ${endDate}`,
     });
   }
 }
 
-export async function getCountryDailyCovidStatistics(req, res) {
+export async function getCountryDailyCovidStatistics(req, reply) {
   const { country: unformattedCountry } = req.params;
   const { start, end } = req.query;
   const country = unformattedCountry.replace(/\b\w/g, (l) => l.toUpperCase());
 
   if (!Object.keys(countriesCovid).includes(country)) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Cannot find covid-19 data for ${country} or may be spelled incorrectly`,
     });
     return;
   }
   const { dateRangeIsValid, message } = validateDateRange(start, end);
   if (!dateRangeIsValid) {
-    res.status(400).json({ message });
+    reply.code(400).send({ message });
     return;
   }
   // valid country, start and end date
@@ -123,33 +123,33 @@ export async function getCountryDailyCovidStatistics(req, res) {
   const { JHUCSSE_url } = countriesCovid[country];
   try {
     const { data } = await axios.get(JHUCSSE_url);
-    res.status(200).json({
+    reply.code(200).send({
       ...parseJHUCSSECountryDaily(data, startDate, endDate),
       country,
       startDate,
       endDate,
     });
   } catch (_) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Failed to get daily covid-19 data for ${country} from ${startDate} to ${endDate}`,
     });
   }
 }
 
-export async function getCountryDateVaccineStatistics(req, res) {
+export async function getCountryDateVaccineStatistics(req, reply) {
   const { country: unformattedCountry } = req.params;
   const { date: dateReq } = req.query;
   // uppercase all the words in the state name Ex: new york -> New York
   const country = unformattedCountry.replace(/\b\w/g, (l) => l.toUpperCase());
   if (!Object.keys(countriesCovid).includes(country)) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Cannot find covid-19 vaccine data for ${country} or may be spelled incorrectly`,
     });
     return;
   }
   if (dateReq !== undefined) {
     if (!isValidDate(dateReq, "vaccine")) {
-      res.status(400).json({
+      reply.code(400).send({
         message: `${dateReq} is an invalid date or is formatted incorrectly`,
       });
       return;
@@ -165,23 +165,23 @@ export async function getCountryDateVaccineStatistics(req, res) {
   const { vaccine_url } = countriesCovid[country];
   try {
     const { data } = await axios.get(vaccine_url);
-    res
-      .status(200)
-      .json({ ...parseRAPSCountryDate(data, date), country, date });
+    reply
+      .code(200)
+      .send({ ...parseRAPSCountryDate(data, date), country, date });
   } catch (_) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Failed to get covid-19 vaccine data for ${country} on ${date}`,
     });
   }
 }
 
-export async function getCountryCumulativeVaccineStatistics(req, res) {
+export async function getCountryCumulativeVaccineStatistics(req, reply) {
   const { country: unformattedCountry } = req.params;
   const { start, end } = req.query;
   const country = unformattedCountry.replace(/\b\w/g, (l) => l.toUpperCase());
 
   if (!Object.keys(countriesCovid).includes(country)) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Cannot find covid-19 data for ${country} or may be spelled incorrectly`,
     });
     return;
@@ -192,7 +192,7 @@ export async function getCountryCumulativeVaccineStatistics(req, res) {
     "vaccine"
   );
   if (!dateRangeIsValid) {
-    res.status(400).json({ message });
+    reply.code(400).send({ message });
     return;
   }
   // valid country, start and end date
@@ -203,26 +203,26 @@ export async function getCountryCumulativeVaccineStatistics(req, res) {
   const { vaccine_url } = countriesCovid[country];
   try {
     const { data } = await axios.get(vaccine_url);
-    res.status(200).json({
+    reply.code(200).send({
       ...parseRAPSCountryCumulative(data, startDate, endDate),
       country,
       startDate,
       endDate,
     });
   } catch (_) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Failed to get cumulative covid-19 vaccine data for ${country} from ${startDate} to ${endDate}`,
     });
   }
 }
 
-export async function getCountryDailyVaccineStatistics(req, res) {
+export async function getCountryDailyVaccineStatistics(req, reply) {
   const { country: unformattedCountry } = req.params;
   const { start, end } = req.query;
   const country = unformattedCountry.replace(/\b\w/g, (l) => l.toUpperCase());
 
   if (!Object.keys(countriesCovid).includes(country)) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Cannot find covid-19 data for ${country} or may be spelled incorrectly`,
     });
     return;
@@ -233,7 +233,7 @@ export async function getCountryDailyVaccineStatistics(req, res) {
     "vaccine"
   );
   if (!dateRangeIsValid) {
-    res.status(400).json({ message });
+    reply.code(400).send({ message });
     return;
   }
   // valid country, start and end date
@@ -244,14 +244,14 @@ export async function getCountryDailyVaccineStatistics(req, res) {
   const { vaccine_url } = countriesCovid[country];
   try {
     const { data } = await axios.get(vaccine_url);
-    res.status(200).json({
+    reply.code(200).send({
       ...parseRAPSCountryDaily(data, startDate, endDate),
       country,
       startDate,
       endDate,
     });
   } catch (_) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Failed to get cumulative covid-19 vaccine data for ${country} from ${startDate} to ${endDate}`,
     });
   }

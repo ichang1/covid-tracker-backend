@@ -16,25 +16,25 @@ import {
   parseRAPSProvinceDaily,
 } from "../utils/parseProvince.js";
 
-export function getProvinces(req, res) {
+export function getProvinces(req, reply) {
   const provinces = { provinces: Object.keys(provincesCovid) };
-  res.status(200).json(provinces);
+  reply.code(200).send(provinces);
 }
 
-export async function getDateProvinceStatistics(req, res) {
+export async function getProvinceDateCovidStatistics(req, reply) {
   const { province: unformattedProvince } = req.params;
   const { date: dateReq } = req.query;
   // uppercase all the words in the state name Ex: new york -> New York
   const province = unformattedProvince.replace(/\b\w/g, (l) => l.toUpperCase());
   if (!Object.keys(provincesCovid).includes(province)) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Cannot find covid-19 data for ${province} or may be spelled incorrectly`,
     });
     return;
   }
   if (dateReq !== undefined) {
     if (!isValidDate(dateReq)) {
-      res.status(400).json({
+      reply.code(400).send({
         message: `${dateReq} is an invalid date or is formatted incorrectly`,
       });
       return;
@@ -50,30 +50,30 @@ export async function getDateProvinceStatistics(req, res) {
   const { JHUCSSE_url } = provincesCovid[province];
   try {
     const { data } = await axios.get(JHUCSSE_url);
-    res
-      .status(200)
-      .json({ ...parseJHUCSSEProvinceDate(data, date), province, date });
+    reply
+      .code(200)
+      .send({ ...parseJHUCSSEProvinceDate(data, date), province, date });
   } catch (_) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Failed to get Covid-19 data for ${province} on ${date}`,
     });
   }
 }
 
-export async function getProvinceCumulativeCovidStatistics(req, res) {
+export async function getProvinceCumulativeCovidStatistics(req, reply) {
   const { province: unformattedProvince } = req.params;
   const { start, end } = req.query;
   const province = unformattedProvince.replace(/\b\w/g, (l) => l.toUpperCase());
 
   if (!Object.keys(provincesCovid).includes(province)) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Cannot find covid-19 data for ${province} or may be spelled incorrectly`,
     });
     return;
   }
   const { dateRangeIsValid, message } = validateDateRange(start, end);
   if (!dateRangeIsValid) {
-    res.status(400).json({ message });
+    reply.code(400).send({ message });
     return;
   }
   // valid state, start and end date
@@ -84,33 +84,33 @@ export async function getProvinceCumulativeCovidStatistics(req, res) {
   const { JHUCSSE_url } = provincesCovid[province];
   try {
     const { data } = await axios.get(JHUCSSE_url);
-    res.status(200).json({
+    reply.code(200).send({
       ...parseJHUCSSEProvinceCumulative(data, startDate, endDate),
       province,
       startDate,
       endDate,
     });
   } catch (_) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Failed to get cumulative Covid-19 data for ${province} from ${startDate} to ${endDate}`,
     });
   }
 }
 
-export async function getProvinceDailyCovidStatistics(req, res) {
+export async function getProvinceDailyCovidStatistics(req, reply) {
   const { province: unformattedProvince } = req.params;
   const { start, end } = req.query;
   const province = unformattedProvince.replace(/\b\w/g, (l) => l.toUpperCase());
 
   if (!Object.keys(provincesCovid).includes(province)) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Cannot find covid-19 data for ${province} or may be spelled incorrectly`,
     });
     return;
   }
   const { dateRangeIsValid, message } = validateDateRange(start, end);
   if (!dateRangeIsValid) {
-    res.status(400).json({ message });
+    reply.code(400).send({ message });
     return;
   }
   // valid state, start and end date
@@ -121,33 +121,33 @@ export async function getProvinceDailyCovidStatistics(req, res) {
   const { JHUCSSE_url } = provincesCovid[province];
   try {
     const { data } = await axios.get(JHUCSSE_url);
-    res.status(200).json({
+    reply.code(200).send({
       ...parseJHUCSSEProvinceDaily(data, startDate, endDate),
       province,
       startDate,
       endDate,
     });
   } catch (_) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Failed to get daily Covid-19 data for ${province} from ${startDate} to ${endDate}`,
     });
   }
 }
 
-export async function getProvinceDateVaccineStatistics(req, res) {
+export async function getProvinceDateVaccineStatistics(req, reply) {
   const { province: unformattedProvince } = req.params;
   const { date: dateReq } = req.query;
   // uppercase all the words in the state name Ex: new york -> New York
   const province = unformattedProvince.replace(/\b\w/g, (l) => l.toUpperCase());
   if (!Object.keys(provincesCovid).includes(province)) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Cannot find covid-19 data for ${province} or may be spelled incorrectly`,
     });
     return;
   }
   if (dateReq !== undefined) {
     if (!isValidDate(dateReq, "vaccine")) {
-      res.status(400).json({
+      reply.code(400).send({
         message: `${dateReq} is an invalid date or is formatted incorrectly`,
       });
       return;
@@ -160,20 +160,20 @@ export async function getProvinceDateVaccineStatistics(req, res) {
   } else {
     date = dateReq;
   }
-  res.status(200).json({
+  reply.code(200).send({
     ...parseRAPSProvinceDate({}, date),
     province,
     date,
   });
 }
 
-export async function getProvinceCumulativeVaccineStatistics(req, res) {
+export async function getProvinceCumulativeVaccineStatistics(req, reply) {
   const { province: unformattedProvince } = req.params;
   const { start, end } = req.query;
   const province = unformattedProvince.replace(/\b\w/g, (l) => l.toUpperCase());
 
   if (!Object.keys(provincesCovid).includes(province)) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Cannot find covid-19 data for ${province} or may be spelled incorrectly`,
     });
     return;
@@ -184,7 +184,7 @@ export async function getProvinceCumulativeVaccineStatistics(req, res) {
     "vaccine"
   );
   if (!dateRangeIsValid) {
-    res.status(400).json({ message });
+    reply.code(400).send({ message });
     return;
   }
   // valid state, start and end date
@@ -192,7 +192,7 @@ export async function getProvinceCumulativeVaccineStatistics(req, res) {
   const LATEST_VACCINE_DATE = dateToYesterday(getTodayDate());
   const startDate = start === undefined ? EARLIEST_VACCINE_DATE : start;
   const endDate = end === undefined ? LATEST_VACCINE_DATE : end;
-  res.status(200).json({
+  reply.code(200).send({
     ...parseRAPSProvinceCumulative({}, startDate, endDate),
     province,
     startDate,
@@ -200,13 +200,13 @@ export async function getProvinceCumulativeVaccineStatistics(req, res) {
   });
 }
 
-export async function getProvinceDailyVaccineStatistics(req, res) {
+export async function getProvinceDailyVaccineStatistics(req, reply) {
   const { province: unformattedProvince } = req.params;
   const { start, end } = req.query;
   const province = unformattedProvince.replace(/\b\w/g, (l) => l.toUpperCase());
 
   if (!Object.keys(provincesCovid).includes(province)) {
-    res.status(400).json({
+    reply.code(400).send({
       message: `Cannot find covid-19 data for ${province} or may be spelled incorrectly`,
     });
     return;
@@ -217,7 +217,7 @@ export async function getProvinceDailyVaccineStatistics(req, res) {
     "vaccine"
   );
   if (!dateRangeIsValid) {
-    res.status(400).json({ message });
+    reply.code(400).send({ message });
     return;
   }
   // valid state, start and end date
@@ -225,7 +225,7 @@ export async function getProvinceDailyVaccineStatistics(req, res) {
   const LATEST_VACCINE_DATE = dateToYesterday(getTodayDate());
   const startDate = start === undefined ? EARLIEST_VACCINE_DATE : start;
   const endDate = end === undefined ? LATEST_VACCINE_DATE : end;
-  res.status(200).json({
+  reply.code(200).send({
     ...parseRAPSProvinceDaily({}, startDate, endDate),
     province,
     startDate,

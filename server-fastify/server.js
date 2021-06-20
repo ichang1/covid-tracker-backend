@@ -2,6 +2,10 @@ import fastify from "fastify";
 import fastifyCors from "fastify-cors";
 
 import { stateCovidRoutes, stateVaccineRoutes } from "./routes/state.js";
+import {
+  provinceCovidRoutes,
+  provinceVaccineRoutes,
+} from "./routes/province.js";
 
 const app = fastify({ logger: true });
 
@@ -12,6 +16,8 @@ app.register(fastifyCors, {
 const routes = [
   { route: stateCovidRoutes, prefix: "covid-19" },
   { route: stateVaccineRoutes, prefix: "vaccine" },
+  { route: provinceCovidRoutes, prefix: "covid-19" },
+  { route: provinceVaccineRoutes, prefix: "vaccine" },
 ];
 
 routes.forEach(({ route, prefix }) => {

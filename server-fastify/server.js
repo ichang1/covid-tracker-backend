@@ -1,8 +1,8 @@
 import fastify from "fastify";
-import { build } from "./app.js";
+import { app } from "./app.js";
 
 async function start(server, port = null) {
-  server.register(build);
+  server.register(app);
   const PORT = process.env.PORT || port || 4000;
 
   try {

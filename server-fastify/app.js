@@ -9,7 +9,7 @@ import {
 import { countryCovidRoutes, countryVaccineRoutes } from "./routes/country.js";
 import { swaggerSchema } from "./schema/swagger.js";
 
-export function build(fastify, options, done) {
+export function app(fastify, options, done) {
   fastify.register(fastifyCors, {
     origin: "*",
   });

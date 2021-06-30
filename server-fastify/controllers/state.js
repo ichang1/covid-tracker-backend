@@ -49,31 +49,17 @@ export async function getStateDateCovidStatistics(req, reply) {
     date = cleanDate(dateReq);
   }
   // state and date are valid
-  const { worldometers_url, JHUCSSE_url } = statesCovid[state];
-  if (date === yesterdayDate) {
-    try {
-      const apireply = await axios.get(`${worldometers_url}?yesterday=true`);
-      reply
-        .code(200)
-        .send({ ...parseWorldometers(apireply.data), date, state });
-    } catch (_) {
-      reply.code(400).send({
-        message: `Failed to get covid-19 data for ${state} on ${date}`,
-      });
-    }
-  } else {
-    try {
-      const apireply = await axios.get(JHUCSSE_url);
-      reply
-        .code(200)
-        .send({ ...parseJHUCSSEStateDate(apireply.data, date), date, state });
-    } catch (_) {
-      reply.code(400).send({
-        message: `Failed to get covid-19 data for ${state} on ${date}`,
-      });
-    }
+  const { JHUCSSE_url } = statesCovid[state];
+  try {
+    const apireply = await axios.get(JHUCSSE_url);
+    reply
+      .code(200)
+      .send({ ...parseJHUCSSEStateDate(apireply.data, date), date, state });
+  } catch (_) {
+    reply.code(400).send({
+      message: `Failed to get covid-19 data for ${state} on ${date}`,
+    });
   }
-  return;
 }
 
 export async function getStateCumulativeCovidStatistics(req, reply) {

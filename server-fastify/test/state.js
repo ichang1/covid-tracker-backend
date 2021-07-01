@@ -136,10 +136,217 @@ const stateErrorDateTests = [
   },
 ];
 
+const stateErrorCumulativeTests = [
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and no start and no end",
+    url: "/covid-19/state/abc/cumulative",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and valid start no end",
+    url: "/covid-19/state/abc/cumulative?start=1-22-2020",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and invalid start no end",
+    url: "/covid-19/state/abc/cumulative?start=1-22-2019",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and wrong format start no end",
+    url: "/covid-19/state/abc/cumulative?start=1/22/2020",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and no start valid end",
+    url: "/covid-19/state/abc/cumulative?end=12-22-2020",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and no start invalid end",
+    url: "/covid-19/state/abc/cumulative?end=1-22-9999",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and no start wrong format end",
+    url: "/covid-19/state/abc/cumulative?end=1/22/2021",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and valid start valid end",
+    url: "/covid-19/state/abc/cumulative?start=1-22-2020&end=1-22-2021",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and invalid start valid end",
+    url: "/covid-19/state/abc/cumulative?start=1-22-2019&end=1-22-2021",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and wrong format start valid end",
+    url: "/covid-19/state/abc/cumulative?start=1-22-safd&end=1-22-2021",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and valid start invalid end",
+    url: "/covid-19/state/abc/cumulative?start=1-22-2020&end=1-22-9999",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and invalid start invalid end",
+    url: "/covid-19/state/abc/cumulative?start=1-22-2019&end=1-22-9999",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and wrong format start invalid end",
+    url: "/covid-19/state/abc/cumulative?start=1-22-safd&end=1-22-9999",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and valid start wrong format end",
+    url: "/covid-19/state/abc/cumulative?start=1-22-2020&end=1-22-adsf",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and invalid start wrong format end",
+    url: "/covid-19/state/abc/cumulative?start=1-22-2019&end=1-22-sdgg",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for invalid state and wrong format start wrong format end",
+    url: "/covid-19/state/abc/cumulative?start=1-22-safd&end=1-22-!@#$",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for valid state and valid start no end",
+    url: "/covid-19/state/boston/cumulative?start=1-22-2020",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for valid state and invalid start no end",
+    url: "/covid-19/state/maine/cumulative?start=1-22-2019",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for valid state and wrong format start no end",
+    url: "/covid-19/state/texas/cumulative?start=1/22/2020",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for valid state and no start invalid end",
+    url: "/covid-19/state/michigan/cumulative?end=1-22-9999",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for valid state and no start wrong format end",
+    url: "/covid-19/state/alabama/cumulative?end=1/22/2021",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for valid state and invalid start valid end",
+    url: "/covid-19/state/washington/cumulative?start=1-22-2019&end=1-22-2021",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for valid state and wrong format start valid end",
+    url: "/covid-19/state/nebraska/cumulative?start=1-22-safd&end=1-22-2021",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for valid state and valid start invalid end",
+    url: "/covid-19/state/florida/cumulative?start=1-22-2020&end=1-22-9999",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for valid state and invalid start invalid end",
+    url: "/covid-19/state/vermont/cumulative?start=1-22-2019&end=1-22-9999",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for valid state and wrong format start invalid end",
+    url: "/covid-19/state/virginia/cumulative?start=1-22-safd&end=1-22-9999",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for valid state and valid start wrong format end",
+    url: "/covid-19/state/nevada/cumulative?start=1-22-2020&end=1-22-adsf",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for valid state and invalid start wrong format end",
+    url: "/covid-19/state/idaho/cumulative?start=1-22-2019&end=1-22-sdgg",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+  {
+    description:
+      "Get covid-19 cumulative stats for valid state and wrong format start wrong format end",
+    url: "/covid-19/state/wisconsin/cumulative?start=1-22-safd&end=1-22-!@#$",
+    method: GET,
+    expectCode: statusCodes[ERROR],
+  },
+];
+
 export const stateTests = [
   ...stateValidStateTests,
   ...stateValidDateTests,
   ...stateValidCumulativeTests,
   ...stateValidDailyTests,
   ...stateErrorDateTests,
+  ...stateErrorCumulativeTests,
 ];

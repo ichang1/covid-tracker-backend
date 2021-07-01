@@ -65,7 +65,6 @@ export async function getStateDateCovidStatistics(req, reply) {
 export async function getStateCumulativeCovidStatistics(req, reply) {
   const { state: unformattedState } = req.params;
   const { start, end } = req.query;
-  console.log(start, end);
   const state = unformattedState.replace(/\b\w/g, (l) => l.toUpperCase());
 
   if (!Object.keys(statesCovid).includes(state)) {

@@ -177,3 +177,49 @@ export function cleanDate(date) {
   const [month, day, year] = date.split("-").map((intStr) => parseInt(intStr));
   return `${month}-${day}-${year}`;
 }
+
+export function randomDateFromRange(minDate, maxDate) {
+  const [minDateMonth, minDateDay, minDateYear] = minDate.split("-");
+  const [maxDateMonth, maxDateDay, maxDateYear] = maxDate.split("-");
+  const randYear = randIntRange(minDateYear, maxDateYear);
+
+  let randMonth;
+  if (randYear === minDateYear) {
+    randMonth = randIntRange(minDate, 12);
+  } else if (randYear === maxDateYear) {
+    randMonth = randIntRange(1, maxDateYear);
+  } else {
+    randMonth = randIntRange(1, 12);
+  }
+
+  let randDay;
+  if (randMonth === 2) {
+    //feburary
+    if (randMonth === minDateMonth && randYear === minDateYear) {
+      randDay = randIntRange(minDateDay, 28 + 1 * (randYear % 4 === 0));
+    } else if (randMonth === maxDateMonth && randYear === maxDateYear) {
+      randDay = randIntRange(1, maxDateDay);
+    } else {
+      randDay = randIntRange(1, 28 + 1 * (randYear % 4 === 0));
+    }
+  } else {
+    if (randMonth === minDateMonth && randYear === minDateYear) {
+      randDay = randIntRange(minDateDay, 30 + 1 * (randMonth % 2 === 1));
+    } else if (randMonth === maxDateMonth && randYear === maxDateYear) {
+      randDay = randIntRange(1, maxDateDay);
+    } else {
+      randDay = randIntRange(1, 30 + 1 * (randMonth % 2 === 1));
+    }
+  }
+  return `${randMonth}-${randDay}-${randYear}`;
+}
+
+export function randomDateRangeFromRange(minDate, maxDate) {
+  const startDate = randomDateFromRange(minDate, maxDate);
+  const endDate = randomDateFromRange(startDate, maxDate);
+  return { startDate, endDate };
+}
+
+function randIntRange(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}

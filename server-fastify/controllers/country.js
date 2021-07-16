@@ -6,6 +6,10 @@ import {
   dateToYesterday,
   validateDateRange,
   cleanDate,
+  EARLIEST_COVID_DATE,
+  EARLIEST_VACCINE_DATE,
+  getLatestCovidDate,
+  getLatestVaccineDate,
 } from "../utils/date.js";
 
 import {
@@ -42,9 +46,8 @@ export async function getCountryDateCovidStatistics(req, reply) {
     }
   }
   let date;
-  const yesterdayDate = dateToYesterday(getTodayDate());
   if (dateReq === undefined) {
-    date = yesterdayDate;
+    date = await getLatestCovidDate();
   } else {
     date = cleanDate(dateReq);
   }
@@ -79,11 +82,10 @@ export async function getCountryCumulativeCovidStatistics(req, reply) {
     return;
   }
   // valid country, start and end date
-  const EARLIEST_COVID_DATE = "1-22-2020";
-  const LATEST_COVID_DATE = dateToYesterday(getTodayDate());
   const startDate =
     start === undefined ? EARLIEST_COVID_DATE : cleanDate(start);
-  const endDate = end === undefined ? LATEST_COVID_DATE : cleanDate(end);
+  const endDate =
+    end === undefined ? await getLatestCovidDate() : cleanDate(end);
   const { JHUCSSE_url } = countriesCovid[country];
   try {
     const { data } = await axios.get(JHUCSSE_url);
@@ -117,11 +119,10 @@ export async function getCountryDailyCovidStatistics(req, reply) {
     return;
   }
   // valid country, start and end date
-  const EARLIEST_COVID_DATE = "1-22-2020";
-  const LATEST_COVID_DATE = dateToYesterday(getTodayDate());
   const startDate =
     start === undefined ? EARLIEST_COVID_DATE : cleanDate(start);
-  const endDate = end === undefined ? LATEST_COVID_DATE : cleanDate(end);
+  const endDate =
+    end === undefined ? await getLatestCovidDate() : cleanDate(end);
   const { JHUCSSE_url } = countriesCovid[country];
   try {
     const { data } = await axios.get(JHUCSSE_url);
@@ -158,11 +159,10 @@ export async function getCountryDateVaccineStatistics(req, reply) {
     }
   }
   let date;
-  const yesterdayDate = dateToYesterday(getTodayDate());
   if (dateReq === undefined) {
-    date = yesterdayDate;
+    date = await getLatestVaccineDate();
   } else {
-    date = cleanDate(dateReq);
+    date = dateReq;
   }
   const { vaccine_url } = countriesCovid[country];
   try {
@@ -198,11 +198,10 @@ export async function getCountryCumulativeVaccineStatistics(req, reply) {
     return;
   }
   // valid country, start and end date
-  const EARLIEST_COVID_DATE = "12-1-2020";
-  const LATEST_COVID_DATE = dateToYesterday(getTodayDate());
   const startDate =
     start === undefined ? EARLIEST_COVID_DATE : cleanDate(start);
-  const endDate = end === undefined ? LATEST_COVID_DATE : cleanDate(end);
+  const endDate =
+    end === undefined ? await getLatestVaccineDate() : cleanDate(end);
   const { vaccine_url } = countriesCovid[country];
   try {
     const { data } = await axios.get(vaccine_url);
@@ -240,11 +239,10 @@ export async function getCountryDailyVaccineStatistics(req, reply) {
     return;
   }
   // valid country, start and end date
-  const EARLIEST_COVID_DATE = "12-1-2020";
-  const LATEST_COVID_DATE = dateToYesterday(getTodayDate());
   const startDate =
     start === undefined ? EARLIEST_COVID_DATE : cleanDate(start);
-  const endDate = end === undefined ? LATEST_COVID_DATE : cleanDate(end);
+  const endDate =
+    end === undefined ? await getLatestCovidDate() : cleanDate(end);
   const { vaccine_url } = countriesCovid[country];
   try {
     const { data } = await axios.get(vaccine_url);

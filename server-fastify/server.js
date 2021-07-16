@@ -13,5 +13,5 @@ async function start(server, port = null) {
   }
 }
 
-const server = fastify({ logger: true });
+const server = fastify({ logger: false });
 start(server);

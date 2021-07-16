@@ -130,7 +130,9 @@ export function parseJHUCSSEStateDaily(data, startDate, endDate) {
         prevDate === "" ? 0 : curCounty.timeline.cases[prevDate];
       const countyTodayTotalCases = curCounty.timeline.cases[date];
       const countyTodayNewCases =
-        countyTodayTotalCases - countyYesterdayTotalCases;
+        countyTodayTotalCases - countyYesterdayTotalCases >= 0
+          ? countyTodayTotalCases - countyYesterdayTotalCases
+          : 0;
       return acc + countyTodayNewCases;
     }, 0);
 
@@ -139,7 +141,9 @@ export function parseJHUCSSEStateDaily(data, startDate, endDate) {
         prevDate === "" ? 0 : curCounty.timeline.deaths[prevDate];
       const countyTodayTotalDeaths = curCounty.timeline.deaths[date];
       const countyTodayNewDeaths =
-        countyTodayTotalDeaths - countyYesterdayTotalDeaths;
+        countyTodayTotalDeaths - countyYesterdayTotalDeaths >= 0
+          ? countyTodayTotalDeaths - countyYesterdayTotalDeaths
+          : 0;
       return acc + countyTodayNewDeaths;
     }, 0);
 

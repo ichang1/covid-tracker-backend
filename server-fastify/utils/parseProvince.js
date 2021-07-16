@@ -91,19 +91,28 @@ export function parseJHUCSSEProvinceDaily(data, startDate, endDate) {
     const casesTotalYesterday =
       prevDate === "" ? 0 : data.timeline.cases[prevDate];
 
-    const newCasesToday = casesTotalThisDay - casesTotalYesterday;
+    const newCasesToday =
+      casesTotalThisDay - casesTotalYesterday >= 0
+        ? casesTotalThisDay - casesTotalYesterday
+        : 0;
 
     const deathsTotalThisDay = data.timeline.deaths[date];
     const deathsTotalYesterday =
       prevDate === "" ? 0 : data.timeline.deaths[prevDate];
 
-    const newDeathsToday = deathsTotalThisDay - deathsTotalYesterday;
+    const newDeathsToday =
+      deathsTotalThisDay - deathsTotalYesterday >= 0
+        ? deathsTotalThisDay - deathsTotalYesterday
+        : 0;
 
     const recoveredTotalThidDay = data.timeline.recovered[date];
     const recoveredTotalYesterday =
       prevDate === "" ? 0 : data.timeline.recovered[prevDate];
 
-    const newRecoveredToday = recoveredTotalThidDay - recoveredTotalYesterday;
+    const newRecoveredToday =
+      recoveredTotalThidDay - recoveredTotalYesterday >= 0
+        ? recoveredTotalThidDay - recoveredTotalYesterday
+        : 0;
 
     const hyphenDateFullYear = formatDate(date);
     cases[hyphenDateFullYear] = newCasesToday;

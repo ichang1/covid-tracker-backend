@@ -1,16 +1,14 @@
-import { dateToNumber, dateToYesterday } from "./date.js";
+import {
+  dateToNumber,
+  dateToYesterday,
+  EARLIEST_COVID_DATE,
+  EARLIEST_VACCINE_DATE,
+  formatDate,
+  unformatDate,
+  dateInRange,
+} from "./date.js";
 
 export function parseJHUCSSECountryDate(data, date) {
-  const formatDate = (d) => {
-    const [month, day, year] = d.split("/");
-    return `${month}-${day}-${year + 2000}`;
-  };
-
-  const unformatDate = (d) => {
-    const [month, day, year] = d.split("-");
-    return `${month}/${day}/${year % 1000}`;
-  };
-
   const todayDate = unformatDate(date);
   const yesterdayDate = unformatDate(dateToYesterday(date));
 
@@ -18,18 +16,12 @@ export function parseJHUCSSECountryDate(data, date) {
   const todayTotalDeaths = data.timeline.deaths[todayDate];
   const todayTotalRecovered = data.timeline.recovered[todayDate];
 
-  const EARLIEST_COVID_DATE = "1-22-2020";
-  const hasValidYesterdayDate =
-    dateToNumber(formatDate(date)) >= dateToNumber(EARLIEST_COVID_DATE);
-  const yesterdayTotalCases = hasValidYesterdayDate
-    ? data.timeline.cases[yesterdayDate]
-    : 0;
-  const yesterdayTotalDeaths = hasValidYesterdayDate
-    ? data.timeline.deaths[yesterdayDate]
-    : 0;
-  const yesterdayTotalRecovered = hasValidYesterdayDate
-    ? data.timeline.recovered[yesterdayDate]
-    : 0;
+  const yesterdayTotalCases =
+    date === EARLIEST_COVID_DATE ? 0 : data.timeline.cases[yesterdayDate];
+  const yesterdayTotalDeaths =
+    date === EARLIEST_COVID_DATE ? 0 : data.timeline.deaths[yesterdayDate];
+  const yesterdayTotalRecovered =
+    date === EARLIEST_COVID_DATE ? 0 : data.timeline.recovered[yesterdayDate];
 
   const todayCases = todayTotalCases - yesterdayTotalCases;
   const todayDeaths = todayTotalDeaths - yesterdayTotalDeaths;
@@ -46,23 +38,12 @@ export function parseJHUCSSECountryDate(data, date) {
 }
 
 export function parseJHUCSSECountryCumulative(data, startDate, endDate) {
-  const formatDate = (d) => {
-    const [month, day, year] = d.split("/");
-    return `${month}-${day}-${parseInt(year) + 2000}`;
-  };
-
   const interestedDates = Object.keys(data.timeline.cases)
-    .filter(
-      (date) =>
-        dateToNumber(startDate) <= dateToNumber(formatDate(date)) &&
-        dateToNumber(endDate) >= dateToNumber(formatDate(date))
-    )
+    .filter((date) => dateInRange(date, startDate, endDate))
     .sort(
       (date1, date2) =>
         dateToNumber(formatDate(date1)) - dateToNumber(formatDate(date2))
     );
-
-  console.log(interestedDates);
 
   let cases = {};
   let deaths = {};
@@ -77,24 +58,8 @@ export function parseJHUCSSECountryCumulative(data, startDate, endDate) {
 }
 
 export function parseJHUCSSECountryDaily(data, startDate, endDate) {
-  const formatDate = (date) => {
-    const [month, day, year] = date.split("/");
-    return `${month}-${day}-${parseInt(year) + 2000}`;
-  };
-  const unformatDate = (date) => {
-    const [month, day, year] = date.split("-");
-    return `${month}/${day}/${parseInt(year) - 2000}`;
-  };
-  const dateInRange = (d) => {
-    const date = formatDate(d);
-    return (
-      dateToNumber(date) >= dateToNumber(startDate) &&
-      dateToNumber(date) <= dateToNumber(endDate)
-    );
-  };
-  const allDates = Object.keys(data.timeline.cases);
-  const datesInterested = allDates
-    .filter((date) => dateInRange(date))
+  const datesInterested = Object.keys(data.timeline.cases)
+    .filter((date) => dateInRange(date, startDate, endDate))
     .sort((date1, date2) => {
       const a = dateToNumber(formatDate(date1));
       const b = dateToNumber(formatDate(date2));
@@ -106,14 +71,13 @@ export function parseJHUCSSECountryDaily(data, startDate, endDate) {
   let deaths = {};
   let recovered = {};
   let prevDate;
-  const EARLIEST_COVID_DATE = "1/22/20";
 
   datesInterested.forEach((date, idx) => {
     if (idx > 0) {
       prevDate = datesInterested[idx - 1];
     } else {
       // idx == 0
-      if (date === EARLIEST_COVID_DATE) {
+      if (date === unformatDate(EARLIEST_COVID_DATE)) {
         // there is no earlier date
         prevDate = "";
       } else {
@@ -125,19 +89,28 @@ export function parseJHUCSSECountryDaily(data, startDate, endDate) {
     const casesTotalYesterday =
       prevDate === "" ? 0 : data.timeline.cases[prevDate];
 
-    const newCasesToday = casesTotalThisDay - casesTotalYesterday;
+    const newCasesToday =
+      casesTotalThisDay - casesTotalYesterday >= 0
+        ? casesTotalThisDay - casesTotalYesterday
+        : 0;
 
     const deathsTotalThisDay = data.timeline.deaths[date];
     const deathsTotalYesterday =
       prevDate === "" ? 0 : data.timeline.deaths[prevDate];
 
-    const newDeathsToday = deathsTotalThisDay - deathsTotalYesterday;
+    const newDeathsToday =
+      deathsTotalThisDay - deathsTotalYesterday >= 0
+        ? deathsTotalThisDay - deathsTotalYesterday
+        : 0;
 
     const recoveredTotalThidDay = data.timeline.recovered[date];
     const recoveredTotalYesterday =
       prevDate === "" ? 0 : data.timeline.recovered[prevDate];
 
-    const newRecoveredToday = recoveredTotalThidDay - recoveredTotalYesterday;
+    const newRecoveredToday =
+      recoveredTotalThidDay - recoveredTotalYesterday >= 0
+        ? recoveredTotalThidDay - recoveredTotalYesterday
+        : 0;
 
     const hyphenDateFullYear = formatDate(date);
     cases[hyphenDateFullYear] = newCasesToday;
@@ -149,8 +122,7 @@ export function parseJHUCSSECountryDaily(data, startDate, endDate) {
 }
 
 export function parseRAPSCountryDate(data, date) {
-  const [month, day, year] = date.split("-");
-  const newDate = [month, day, year % 1000].join("/");
+  const newDate = unformatDate(date);
   const filteredDateStats = data.timeline.filter(
     ({ date: d }) => d === newDate
   );
@@ -162,19 +134,8 @@ export function parseRAPSCountryDate(data, date) {
 }
 
 export function parseRAPSCountryCumulative(data, startDate, endDate) {
-  const formatDate = (date) => {
-    const [month, day, year] = date.split("/");
-    return `${month}-${day}-${parseInt(year) + 2000}`;
-  };
-  const dateInRange = (d) => {
-    const date = formatDate(d);
-    return (
-      dateToNumber(date) >= dateToNumber(startDate) &&
-      dateToNumber(date) <= dateToNumber(endDate)
-    );
-  };
   const datesInterested = data.timeline
-    .filter(({ date: d }) => dateInRange(d))
+    .filter(({ date: d }) => dateInRange(d, startDate, endDate))
     .sort(({ date: date1 }, { date: date2 }) => {
       const a = dateToNumber(formatDate(date1));
       const b = dateToNumber(formatDate(date2));
@@ -190,19 +151,8 @@ export function parseRAPSCountryCumulative(data, startDate, endDate) {
 }
 
 export function parseRAPSCountryDaily(data, startDate, endDate) {
-  const formatDate = (date) => {
-    const [month, day, year] = date.split("/");
-    return `${month}-${day}-${parseInt(year) + 2000}`;
-  };
-  const dateInRange = (d) => {
-    const date = formatDate(d);
-    return (
-      dateToNumber(date) >= dateToNumber(startDate) &&
-      dateToNumber(date) <= dateToNumber(endDate)
-    );
-  };
   const datesInterested = data.timeline
-    .filter(({ date: d }) => dateInRange(d))
+    .filter(({ date: d }) => dateInRange(d, startDate, endDate))
     .sort(({ date: date1 }, { date: date2 }) => {
       const a = dateToNumber(formatDate(date1));
       const b = dateToNumber(formatDate(date2));

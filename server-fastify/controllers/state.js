@@ -2,13 +2,14 @@ import axios from "axios";
 import { statesCovid } from "../places/states.js";
 import {
   isValidDate,
-  getTodayDate,
-  dateToYesterday,
   validateDateRange,
   cleanDate,
+  getLatestCovidDate,
+  getLatestVaccineDate,
+  EARLIEST_COVID_DATE,
+  EARLIEST_VACCINE_DATE,
 } from "../utils/date.js";
 import {
-  parseWorldometers,
   parseJHUCSSEStateDate,
   parseJHUCSSEStateCumulative,
   parseJHUCSSEStateDaily,
@@ -17,7 +18,7 @@ import {
   parseRAPSStateDaily,
 } from "../utils/parseState.js";
 
-export function getStates(req, reply) {
+export function getStates(_, reply) {
   const us_states = { states: Object.keys(statesCovid) };
   reply.code(200).send(us_states);
 }
@@ -42,9 +43,8 @@ export async function getStateDateCovidStatistics(req, reply) {
     }
   }
   let date;
-  const yesterdayDate = dateToYesterday(getTodayDate());
   if (dateReq === undefined) {
-    date = yesterdayDate;
+    date = await getLatestCovidDate();
   } else {
     date = cleanDate(dateReq);
   }
@@ -79,12 +79,11 @@ export async function getStateCumulativeCovidStatistics(req, reply) {
     return;
   }
   // valid state, start and end date
-  const EARLIEST_COVID_DATE = "1-22-2020";
-  const LATEST_COVID_DATE = dateToYesterday(getTodayDate());
   const startDate =
     start === undefined ? EARLIEST_COVID_DATE : cleanDate(start);
-  const endDate = end === undefined ? LATEST_COVID_DATE : cleanDate(end);
-  const { worldometers_url, JHUCSSE_url } = statesCovid[state];
+  const endDate =
+    end === undefined ? await getLatestVaccineDate() : cleanDate(end);
+  const { JHUCSSE_url } = statesCovid[state];
   let cumulativeData;
   try {
     const johnHopkinsApireply = await axios.get(JHUCSSE_url);
@@ -98,31 +97,6 @@ export async function getStateCumulativeCovidStatistics(req, reply) {
       message: `Failed to get cumulative covid-19 data for ${state} from ${startDate} to ${endDate}`,
     });
     return;
-  }
-  if (
-    endDate === LATEST_COVID_DATE &&
-    !Object.keys(cumulativeData.cases).includes(endDate)
-  ) {
-    // api wants most data for most recent date, but data from john hopkins didn't have it because
-    // it is updated at different
-    // get it from worldometers api
-    try {
-      const worldometersApireply = await axios.get(worldometers_url);
-      const {
-        totalCases: recentTotalCases,
-        totalDeaths: recentTotalDeaths,
-        totalRecovered: recentTotalRecovered,
-      } = parseWorldometers(worldometersApireply.data);
-      // add to cumulative data obj
-      cumulativeData.cases[endDate] = recentTotalCases;
-      cumulativeData.deaths[endDate] = recentTotalDeaths;
-      cumulativeData.recovered[endDate] = recentTotalRecovered;
-    } catch (_) {
-      reply.code(400).send({
-        message: `Failed to get cumulative covid-19 data for ${state} on ${endDate}`,
-      });
-      return;
-    }
   }
   reply
     .code(200)
@@ -147,12 +121,11 @@ export async function getStateDailyCovidStatistics(req, reply) {
   }
 
   // valid state, start and end date
-  const EARLIEST_COVID_DATE = "1-22-2020";
-  const LATEST_COVID_DATE = dateToYesterday(getTodayDate());
   const startDate =
     start === undefined ? EARLIEST_COVID_DATE : cleanDate(start);
-  const endDate = end === undefined ? LATEST_COVID_DATE : cleanDate(end);
-  const { worldometers_url, JHUCSSE_url } = statesCovid[state];
+  const endDate =
+    end === undefined ? await getLatestCovidDate() : cleanDate(end);
+  const { JHUCSSE_url } = statesCovid[state];
   let dailyData;
   try {
     const johnHopkinsApireply = await axios.get(JHUCSSE_url);
@@ -166,29 +139,6 @@ export async function getStateDailyCovidStatistics(req, reply) {
       message: `Failed to get daily covid-19 data for ${state} from ${startDate} to ${endDate}`,
     });
     return;
-  }
-  if (
-    endDate === LATEST_COVID_DATE &&
-    !Object.keys(dailyData.cases).includes(endDate)
-  ) {
-    // api wants most data for most recent date, but data from john hopkins didn't have it because
-    // it is updated at different
-    // get it from worldometers api
-    try {
-      const worldometersApireply = await axios.get(worldometers_url);
-      const { todayCases, todayDeaths, todayRecovered } = parseWorldometers(
-        worldometersApireply.data
-      );
-      // add to cumulative data obj
-      dailyData.cases[endDate] = todayCases;
-      dailyData.deaths[endDate] = todayDeaths;
-      dailyData.recovered[endDate] = todayRecovered;
-    } catch (_) {
-      reply.code(400).send({
-        message: `Failed to get daily covid-19 data for ${state} on ${endDate}`,
-      });
-      return;
-    }
   }
   reply.code(200).send({ ...dailyData, state, start: startDate, end: endDate });
 }
@@ -213,9 +163,8 @@ export async function getStateDateVaccineStatistics(req, reply) {
     }
   }
   let date;
-  const yesterdayDate = dateToYesterday(getTodayDate());
   if (dateReq === undefined) {
-    date = yesterdayDate;
+    date = await getLatestVaccineDate();
   } else {
     date = cleanDate(dateReq);
   }
@@ -255,11 +204,10 @@ export async function getStateCumulativeVaccineStatistics(req, reply) {
     return;
   }
   // valid state, start and end date
-  const EARLIEST_VACCINE_DATE = "12-1-2020";
-  const LATEST_VACCINE_DATE = dateToYesterday(getTodayDate());
   const startDate =
     start === undefined ? EARLIEST_VACCINE_DATE : cleanDate(start);
-  const endDate = end === undefined ? LATEST_VACCINE_DATE : cleanDate(end);
+  const endDate =
+    end === undefined ? await getLatestVaccineDate() : cleanDate(end);
   const { vaccine: vaccine_url } = statesCovid[state];
   try {
     const apireply = await axios.get(vaccine_url);
@@ -297,11 +245,10 @@ export async function getStateDailyVaccineStatistics(req, reply) {
     return;
   }
   // valid state, start and end date
-  const EARLIEST_VACCINE_DATE = "12-1-2020";
-  const LATEST_VACCINE_DATE = dateToYesterday(getTodayDate());
   const startDate =
     start === undefined ? EARLIEST_VACCINE_DATE : cleanDate(start);
-  const endDate = end === undefined ? LATEST_VACCINE_DATE : cleanDate(end);
+  const endDate =
+    end === undefined ? await getLatestVaccineDate() : cleanDate(end);
   const { vaccine: vaccine_url } = statesCovid[state];
   try {
     const apireply = await axios.get(vaccine_url);

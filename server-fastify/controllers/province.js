@@ -6,6 +6,10 @@ import {
   dateToYesterday,
   validateDateRange,
   cleanDate,
+  EARLIEST_COVID_DATE,
+  EARLIEST_VACCINE_DATE,
+  getLatestCovidDate,
+  getLatestVaccineDate,
 } from "../utils/date.js";
 import {
   parseJHUCSSEProvinceDate,
@@ -41,9 +45,8 @@ export async function getProvinceDateCovidStatistics(req, reply) {
     }
   }
   let date;
-  const yesterdayDate = dateToYesterday(getTodayDate());
   if (dateReq === undefined) {
-    date = yesterdayDate;
+    date = await getLatestCovidDate();
   } else {
     date = cleanDate(dateReq);
   }
@@ -77,11 +80,10 @@ export async function getProvinceCumulativeCovidStatistics(req, reply) {
     return;
   }
   // valid state, start and end date
-  const EARLIEST_COVID_DATE = "1-22-2020";
-  const LATEST_COVID_DATE = dateToYesterday(getTodayDate());
   const startDate =
     start === undefined ? EARLIEST_COVID_DATE : cleanDate(start);
-  const endDate = end === undefined ? LATEST_COVID_DATE : cleanDate(end);
+  const endDate =
+    end === undefined ? await getLatestCovidDate() : cleanDate(end);
   const { JHUCSSE_url } = provincesCovid[province];
   try {
     const { data } = await axios.get(JHUCSSE_url);
@@ -115,11 +117,10 @@ export async function getProvinceDailyCovidStatistics(req, reply) {
     return;
   }
   // valid state, start and end date
-  const EARLIEST_COVID_DATE = "1-22-2020";
-  const LATEST_COVID_DATE = dateToYesterday(getTodayDate());
   const startDate =
     start === undefined ? EARLIEST_COVID_DATE : cleanDate(start);
-  const endDate = end === undefined ? LATEST_COVID_DATE : cleanDate(end);
+  const endDate =
+    end === undefined ? await getLatestCovidDate() : cleanDate(end);
   const { JHUCSSE_url } = provincesCovid[province];
   try {
     const { data } = await axios.get(JHUCSSE_url);
@@ -143,7 +144,7 @@ export async function getProvinceDateVaccineStatistics(req, reply) {
   const province = unformattedProvince.replace(/\b\w/g, (l) => l.toUpperCase());
   if (!Object.keys(provincesCovid).includes(province)) {
     reply.code(400).send({
-      message: `Cannot find covid-19 data for ${province} or may be spelled incorrectly`,
+      message: `Cannot find covid-19 vaccine data for ${province} or may be spelled incorrectly`,
     });
     return;
   }
@@ -156,9 +157,8 @@ export async function getProvinceDateVaccineStatistics(req, reply) {
     }
   }
   let date;
-  const yesterdayDate = dateToYesterday(getTodayDate());
   if (dateReq === undefined) {
-    date = yesterdayDate;
+    date = await getLatestVaccineDate();
   } else {
     date = cleanDate(dateReq);
   }
@@ -176,7 +176,7 @@ export async function getProvinceCumulativeVaccineStatistics(req, reply) {
 
   if (!Object.keys(provincesCovid).includes(province)) {
     reply.code(400).send({
-      message: `Cannot find covid-19 data for ${province} or may be spelled incorrectly`,
+      message: `Cannot find covid-19 vaccine data for ${province} or may be spelled incorrectly`,
     });
     return;
   }
@@ -190,11 +190,10 @@ export async function getProvinceCumulativeVaccineStatistics(req, reply) {
     return;
   }
   // valid state, start and end date
-  const EARLIEST_VACCINE_DATE = "12-1-2020";
-  const LATEST_VACCINE_DATE = dateToYesterday(getTodayDate());
   const startDate =
     start === undefined ? EARLIEST_VACCINE_DATE : cleanDate(start);
-  const endDate = end === undefined ? LATEST_VACCINE_DATE : cleanDate(end);
+  const endDate =
+    end === undefined ? await getLatestVaccineDate() : cleanDate(end);
   reply.code(200).send({
     ...parseRAPSProvinceCumulative({}, startDate, endDate),
     province,
@@ -210,7 +209,7 @@ export async function getProvinceDailyVaccineStatistics(req, reply) {
 
   if (!Object.keys(provincesCovid).includes(province)) {
     reply.code(400).send({
-      message: `Cannot find covid-19 data for ${province} or may be spelled incorrectly`,
+      message: `Cannot find covid-19 vaccine data for ${province} or may be spelled incorrectly`,
     });
     return;
   }
@@ -224,11 +223,10 @@ export async function getProvinceDailyVaccineStatistics(req, reply) {
     return;
   }
   // valid state, start and end date
-  const EARLIEST_VACCINE_DATE = "12-1-2020";
-  const LATEST_VACCINE_DATE = dateToYesterday(getTodayDate());
   const startDate =
     start === undefined ? EARLIEST_VACCINE_DATE : cleanDate(start);
-  const endDate = end === undefined ? LATEST_VACCINE_DATE : cleanDate(end);
+  const endDate =
+    end === undefined ? await getLatestVaccineDate() : cleanDate(end);
   reply.code(200).send({
     ...parseRAPSProvinceDaily({}, startDate, endDate),
     province,

@@ -1,3 +1,5 @@
+import axios from "axios";
+
 /**
  *  converts a date into an integer for comparison
  * @param {String} date M-DD-YYYY
@@ -167,6 +169,24 @@ export function getTodayDate() {
   return todayDate;
 }
 
+export function formatDate(d) {
+  const [month, day, year] = d.split("/").map((num) => parseInt(num));
+  return `${month}-${day}-${year + 2000}`;
+}
+
+export function unformatDate(d) {
+  const [month, day, year] = d.split("-").map((num) => parseInt(num));
+  return `${month}/${day}/${year % 1000}`;
+}
+
+export function dateInRange(d, startDate, endDate) {
+  const date = formatDate(d);
+  return (
+    dateToNumber(date) >= dateToNumber(startDate) &&
+    dateToNumber(date) <= dateToNumber(endDate)
+  );
+}
+
 function stringIsInteger(string) {
   const digits = "0123456789".split("");
 
@@ -179,15 +199,21 @@ export function cleanDate(date) {
 }
 
 export function randomDateFromRange(minDate, maxDate) {
-  const [minDateMonth, minDateDay, minDateYear] = minDate.split("-");
-  const [maxDateMonth, maxDateDay, maxDateYear] = maxDate.split("-");
+  const [minDateMonth, minDateDay, minDateYear] = minDate
+    .split("-")
+    .map((num) => parseInt(num));
+  const [maxDateMonth, maxDateDay, maxDateYear] = maxDate
+    .split("-")
+    .map((num) => parseInt(num));
   const randYear = randIntRange(minDateYear, maxDateYear);
 
   let randMonth;
-  if (randYear === minDateYear) {
-    randMonth = randIntRange(minDate, 12);
+  if (minDateYear === maxDateYear) {
+    randMonth = randIntRange(minDateMonth, maxDateMonth);
+  } else if (randYear === minDateYear) {
+    randMonth = randIntRange(minDateMonth, 12);
   } else if (randYear === maxDateYear) {
-    randMonth = randIntRange(1, maxDateYear);
+    randMonth = randIntRange(1, maxDateMonth);
   } else {
     randMonth = randIntRange(1, 12);
   }
@@ -195,7 +221,13 @@ export function randomDateFromRange(minDate, maxDate) {
   let randDay;
   if (randMonth === 2) {
     //feburary
-    if (randMonth === minDateMonth && randYear === minDateYear) {
+    if (
+      minDateMonth === maxDateMonth &&
+      randYear === minDateYear &&
+      randYear === maxDateYear
+    ) {
+      randDay = randIntRange(minDateDay, maxDateDay);
+    } else if (randMonth === minDateMonth && randYear === minDateYear) {
       randDay = randIntRange(minDateDay, 28 + 1 * (randYear % 4 === 0));
     } else if (randMonth === maxDateMonth && randYear === maxDateYear) {
       randDay = randIntRange(1, maxDateDay);
@@ -203,7 +235,13 @@ export function randomDateFromRange(minDate, maxDate) {
       randDay = randIntRange(1, 28 + 1 * (randYear % 4 === 0));
     }
   } else {
-    if (randMonth === minDateMonth && randYear === minDateYear) {
+    if (
+      minDateMonth === maxDateMonth &&
+      randYear === minDateYear &&
+      randYear === maxDateYear
+    ) {
+      randDay = randIntRange(minDateDay, maxDateDay);
+    } else if (randMonth === minDateMonth && randYear === minDateYear) {
       randDay = randIntRange(minDateDay, 30 + 1 * (randMonth % 2 === 1));
     } else if (randMonth === maxDateMonth && randYear === maxDateYear) {
       randDay = randIntRange(1, maxDateDay);
@@ -217,8 +255,42 @@ export function randomDateFromRange(minDate, maxDate) {
 export function randomDateRangeFromRange(minDate, maxDate) {
   const startDate = randomDateFromRange(minDate, maxDate);
   const endDate = randomDateFromRange(startDate, maxDate);
+
   return { startDate, endDate };
 }
+
+export async function getLatestCovidDate() {
+  try {
+    const JHUCSSE_res = await axios.get(
+      "https://disease.sh/v3/covid-19/historical/all?lastdays=1"
+    );
+    const JHUCSSE_latest_date = Object.keys(JHUCSSE_res.data.cases)[0];
+    return formatDate(JHUCSSE_latest_date);
+  } catch {
+    const default_latest_date = dateToYesterday(
+      dateToYesterday(getTodayDate())
+    );
+    return default_latest_date;
+  }
+}
+
+export async function getLatestVaccineDate() {
+  try {
+    const RAPS_res = await axios.get(
+      "https://disease.sh/v3/covid-19/vaccine/coverage?lastdays=1&fullData=false"
+    );
+    const RAPS_latest_date = Object.keys(RAPS_res.data)[0];
+    return formatDate(RAPS_latest_date);
+  } catch {
+    const default_latest_date = dateToYesterday(
+      dateToYesterday(getTodayDate())
+    );
+    return default_latest_date;
+  }
+}
+
+export const EARLIEST_COVID_DATE = "1-22-2020";
+export const EARLIEST_VACCINE_DATE = "12-1-2020";
 
 function randIntRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;

@@ -138,7 +138,7 @@ export const getVaccineProvinceCumulativeOrDailyStatOpts = {
   schema: {
     tags: ["Province Covid-19 and vaccine"],
     params: {
-      country: { type: "string", description: "Province name" },
+      province: { type: "string", description: "Province name" },
     },
     querystring: {
       start: {

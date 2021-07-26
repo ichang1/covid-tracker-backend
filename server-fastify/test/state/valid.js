@@ -1,14 +1,15 @@
 import {
   GET,
-  ERROR,
   statusCodes,
   routeTypes,
   placeTypes,
   generateValidPlaceTests,
   generateValidPlaceErrorTests,
-} from "./utils.js";
+} from "../utils.js";
 
-import { statesCovid } from "../places/states.js";
+import { statesCovid } from "../../places/states.js";
+
+const states = Object.keys(statesCovid).slice(10, 11);
 
 const validStateTests = [
   {
@@ -25,7 +26,7 @@ const validStateTests = [
   },
 ];
 
-const validStateCovidTests = Object.keys(statesCovid).reduce(
+const validStateCovidTests = states.reduce(
   (tests, stateName) => [
     ...tests,
     ...generateValidPlaceTests(
@@ -37,7 +38,7 @@ const validStateCovidTests = Object.keys(statesCovid).reduce(
   []
 );
 
-const validStateVaccineTests = Object.keys(statesCovid).reduce(
+const validStateVaccineTests = states.reduce(
   (tests, stateName) => [
     ...tests,
     ...generateValidPlaceTests(stateName, placeTypes.STATE, routeTypes.VACCINE),
@@ -45,7 +46,7 @@ const validStateVaccineTests = Object.keys(statesCovid).reduce(
   []
 );
 
-const validStateCovidErrorTests = Object.keys(statesCovid).reduce(
+const validStateCovidErrorTests = states.reduce(
   (tests, stateName) => [
     ...tests,
     ...generateValidPlaceErrorTests(
@@ -57,7 +58,7 @@ const validStateCovidErrorTests = Object.keys(statesCovid).reduce(
   []
 );
 
-const validStateVaccineErrorTests = Object.keys(statesCovid).reduce(
+const validStateVaccineErrorTests = states.reduce(
   (tests, stateName) => [
     ...tests,
     ...generateValidPlaceErrorTests(
@@ -69,9 +70,14 @@ const validStateVaccineErrorTests = Object.keys(statesCovid).reduce(
   []
 );
 
-export const stateTests = [
+export const allValidStateTests = [
+  ...validStateTests,
   ...validStateCovidTests,
   ...validStateVaccineTests,
   ...validStateCovidErrorTests,
   ...validStateVaccineErrorTests,
 ];
+
+// 70 extra tests per state. Initial amount is 2 tests.
+
+// console.log(allValidStateTests);

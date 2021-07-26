@@ -14,3 +14,5 @@ export function setupTestEnvironment() {
 
   return server;
 }
+
+jest.setTimeout(15000);

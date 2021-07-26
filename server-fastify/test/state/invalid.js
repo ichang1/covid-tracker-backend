@@ -1,6 +1,4 @@
 import {
-  GET,
-  statusCodes,
   routeTypes,
   placeTypes,
   generateInvalidPlaceErrorTests,

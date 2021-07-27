@@ -203,10 +203,6 @@ export const provincesCovid = {
     JHUCSSE_url:
       "https://disease.sh/v3/covid-19/historical/China/tibet?lastdays=all",
   },
-  Unknown: {
-    JHUCSSE_url:
-      "https://disease.sh/v3/covid-19/historical/China/unknown?lastdays=all",
-  },
   Xinjiang: {
     JHUCSSE_url:
       "https://disease.sh/v3/covid-19/historical/China/xinjiang?lastdays=all",

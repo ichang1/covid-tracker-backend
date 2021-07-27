@@ -75,10 +75,6 @@ export const provincesCovid = {
     JHUCSSE_url:
       "https://disease.sh/v3/covid-19/historical/Canada/quebec?lastdays=all",
   },
-  "Repatriated Travellers": {
-    JHUCSSE_url:
-      "https://disease.sh/v3/covid-19/historical/Canada/repatriated%20travellers?lastdays=all",
-  },
   Saskatchewan: {
     JHUCSSE_url:
       "https://disease.sh/v3/covid-19/historical/Canada/saskatchewan?lastdays=all",

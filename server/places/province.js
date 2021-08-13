@@ -271,10 +271,10 @@ export const provincesCovid = {
     JHUCSSE_url:
       "https://disease.sh/v3/covid-19/historical/Netherlands/aruba?lastdays=all",
   },
-  "Bonaire, Sint Eustatius And Saba": {
-    JHUCSSE_url:
-      "https://disease.sh/v3/covid-19/historical/Netherlands/bonaire,%20sint%20eustatius%20and%20saba?lastdays=all",
-  },
+  // "Bonaire, Sint Eustatius And Saba": {
+  //   JHUCSSE_url:
+  //     "https://disease.sh/v3/covid-19/historical/Netherlands/bonaire,%20sint%20eustatius%20and%20saba?lastdays=all",
+  // },
   Curacao: {
     JHUCSSE_url:
       "https://disease.sh/v3/covid-19/historical/Netherlands/curacao?lastdays=all",
@@ -323,10 +323,10 @@ export const provincesCovid = {
     JHUCSSE_url:
       "https://disease.sh/v3/covid-19/historical/UK/montserrat?lastdays=all",
   },
-  "Saint Helena, Ascension And Tristan Da Cunha": {
-    JHUCSSE_url:
-      "https://disease.sh/v3/covid-19/historical/UK/saint%20helena,%20ascension%20and%20tristan%20da%20cunha?lastdays=all",
-  },
+  // "Saint Helena, Ascension And Tristan Da Cunha": {
+  //   JHUCSSE_url:
+  //     "https://disease.sh/v3/covid-19/historical/UK/saint%20helena,%20ascension%20and%20tristan%20da%20cunha?lastdays=all",
+  // },
   "Turks And Caicos Islands": {
     JHUCSSE_url:
       "https://disease.sh/v3/covid-19/historical/UK/turks%20and%20caicos%20islands?lastdays=all",

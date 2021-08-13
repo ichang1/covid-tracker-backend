@@ -227,11 +227,11 @@ export const countriesCovid = {
     vaccine_url:
       "https://disease.sh/v3/covid-19/vaccine/coverage/countries/Costa%20Rica?lastdays=all&fullData=true",
   },
-  "C\u00f4te D'Ivoire": {
+  "CôTe D'Ivoire": {
     JHUCSSE_url:
-      "https://disease.sh/v3/covid-19/historical/C\u00f4te%20d'Ivoire?lastdays=all",
+      "https://disease.sh/v3/covid-19/historical/Cote%20d%27Ivoire?lastdays=all",
     vaccine_url:
-      "https://disease.sh/v3/covid-19/vaccine/coverage/countries/C\u00f4te%20d'Ivoire?lastdays=all&fullData=true",
+      "https://disease.sh/v3/covid-19/vaccine/coverage/countries/C%C3%B4te%20d%27Ivoire?lastdays=all&fullData=true",
   },
   Croatia: {
     JHUCSSE_url:

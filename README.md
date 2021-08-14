@@ -1,3 +1,3 @@
 # covid-tracker-backend
 
-The API can be found [here](https://coronavirus-data-api.herokuapp.com/)
+The API can be found at [https://coronavirus-data-api.herokuapp.com/](https://coronavirus-data-api.herokuapp.com/)

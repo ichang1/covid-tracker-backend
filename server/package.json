@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node server -p $PORT",
+    "start": "node server",
     "dev": "nodemon server",
     "test": "jest --runInBand --watch"
   },

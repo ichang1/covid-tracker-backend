@@ -4,7 +4,7 @@ export const swaggerSchema = {
   swagger: {
     openapi: "3.0.0",
     info: {
-      title: "covid-tracker-api Docs",
+      title: "Coronavirus-Data-Api Docs",
       version: "0.1.0",
       description:
         "This is an api that parses Covid-19 data from the disease.sh api into a common format",

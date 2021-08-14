@@ -1,5 +1,6 @@
 import fastifyCors from "fastify-cors";
 import fastifySwagger from "fastify-swagger";
+import fastifyRateLimit from "fastify-rate-limit";
 
 import { stateCovidRoutes, stateVaccineRoutes } from "./routes/state.js";
 import {
@@ -12,6 +13,11 @@ import { swaggerSchema } from "./schema/swagger.js";
 export function app(fastify, options, done) {
   fastify.register(fastifyCors, {
     origin: "*",
+  });
+
+  fastify.register(fastifyRateLimit, {
+    max: 100,
+    timeWindow: "1 minute",
   });
 
   fastify.register(fastifySwagger, swaggerSchema);

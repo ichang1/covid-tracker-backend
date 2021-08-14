@@ -1,9 +1,9 @@
 import fastify from "fastify";
 import { app } from "./app.js";
 
-async function start(server, port = null) {
+async function start(server) {
   server.register(app);
-  const PORT = process.env.PORT || port || 4000;
+  const PORT = process.env.PORT || 4000;
 
   try {
     await server.listen(PORT);

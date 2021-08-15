@@ -13,6 +13,7 @@ export const swaggerSchema = {
         url: "https://spdx.org/licenses/MIT.html",
       },
     },
+    schemes: ["https"],
     tags: [
       {
         name: "US state Covid-19 and vaccine",

@@ -63,7 +63,7 @@ export function isValidDate(date, type = "covid") {
         }
       }
     } else {
-      if (parseInt(day) > 30) {
+      if (parseInt(day) > 30 + 1 * (parseInt(month) >= 8)) {
         return false;
       }
     }
@@ -122,7 +122,7 @@ export function dateToYesterday(date) {
     return `${month - 1}-${31}-${year}`;
   }
   // day == 1 and month > 1 and month != 3 and odd month
-  return `${month - 1}-${30}-${year}`;
+  return `${month - 1}-${30 + 1 * (month > 8)}-${year}`;
 }
 
 export function validateDateRange(start, end, type = "covid") {
